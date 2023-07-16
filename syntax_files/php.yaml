@@ -1,7 +1,8 @@
 filetype: php
 
 detect: 
-    filename: "\\.php[2345s~]?$"
+    filename: "\\.php[2345s~]|\\.inc[2345s~]$"
+    header: "^(<\\?php)"
 
 rules:
     - symbol.operator: "<|>"

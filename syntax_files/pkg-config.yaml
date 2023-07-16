@@ -2,6 +2,7 @@ filetype: pc
 
 detect: 
     filename: "\\.pc$"
+    header: "^(prefix|exec_prefix|libdir|includedir)="
 
 rules:
     - preproc: "^(Name|Description|URL|Version|Conflicts|Cflags):"

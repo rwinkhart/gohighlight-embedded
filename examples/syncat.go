@@ -27,6 +27,7 @@ func main() {
 	    syn_dir = gopath + "/src/github.com/jessp01/highlight/syntax_files"
 	}
 
+	syn_dir = os.Getenv("SYNDIR")
 	var defs []*highlight.Def
 	err := highlight.ParseSyntaxFiles (syn_dir, &defs)
 	if err != nil {
