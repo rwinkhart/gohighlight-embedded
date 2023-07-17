@@ -9,7 +9,7 @@ import (
 	"strings"
 
 	"github.com/fatih/color"
-	"github.com/jessp01/highlight"
+	"github.com/jessp01/gohighlight"
 )
 
 func main() {

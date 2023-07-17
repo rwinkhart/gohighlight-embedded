@@ -1,9 +1,9 @@
 # Highlight
-[![Go Report Card](https://goreportcard.com/badge/github.com/jessp01/highlight)](https://goreportcard.com/report/github.com/jessp01/highlight)
-[![GoDoc](https://godoc.org/github.com/jessp01/highlight?status.svg)](http://godoc.org/github.com/jessp01/highlight)
-[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/jessp01/highlight/blob/master/LICENSE)
+[![Go Report Card](https://goreportcard.com/badge/github.com/jessp01/gohighlight)](https://goreportcard.com/report/github.com/jessp01/gohighlight)
+[![GoDoc](https://godoc.org/github.com/jessp01/gohighlight?status.svg)](http://godoc.org/github.com/jessp01/gohighlight)
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/jessp01/gohighlight/blob/master/LICENSE)
 
-`highlight` is a syntax highlighter of programming languages, config formats and UNIX commands. 
+`gohighlight` is a syntax highlighter of programming languages, config formats and UNIX commands. 
 It allows you to pass in a string and get back all the information you need to properly highlight it..
 This repo includes over a 100 different lexers and contributions are most welcome:)
 
@@ -24,7 +24,7 @@ Below is a recap of the main changes made since:
 ## Installation
 
 ```
-go get github.com/jessp01/highlight
+$ go get github.com/jessp01/highlight
 ```
 
 Be sure to point your code to the correct path of `syntax_files`.
@@ -127,6 +127,7 @@ func helloWorld() {
             }
         }
 
+	color.Unset()
         fmt.Print("\n")
     }
 }
