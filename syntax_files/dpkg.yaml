@@ -2,7 +2,7 @@ filetype: dpkg
 
 detect: 
     filename: "\\.dpkg$"
-    header: "(^[D|+].*)"
+    header: "(^[Desired=|+].*)"
 
 rules:
     - constant.number: "(^[D|+].*)"
