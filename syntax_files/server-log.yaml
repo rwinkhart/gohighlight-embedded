@@ -1,7 +1,7 @@
 filetype: serverlog
 
 detect:
-    filename: "httpd.*\\.log|vhosts\\\\.*\\.log|apache.*\\.log|nginx.*\\.log"
+    filename: "(\\.log.*)"
 
 rules:
     - constant.number: "(\\[[^]]+\\])"
