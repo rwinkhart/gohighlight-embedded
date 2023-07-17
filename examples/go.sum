@@ -1,5 +1,7 @@
 github.com/fatih/color v1.15.0 h1:kOqh6YHBtK8aywxGerMG2Eq3H6Qgoqeo13Bk2Mv/nBs=
 github.com/fatih/color v1.15.0/go.mod h1:0h5ZqXfHYED7Bhv2ZJamyIOUej9KtShiJESRwBDUSsw=
+github.com/jessp01/gohighlight v0.21.1-1 h1:Vf612pFhltUSZrUlnGPb2GT+JVHvCAXP/WUxEsgQVqY=
+github.com/jessp01/gohighlight v0.21.1-1/go.mod h1:xNaUZAOKsRUL9Gyh/sSs1mTanML17Rx8Pn5kg80uIgI=
 github.com/jessp01/highlight v0.0.0-20230716160321-8969d1f05a45 h1:XKfU3AV4wfMbzX0jlqSRXYdsPueivQhHgSqlyUjf28g=
 github.com/jessp01/highlight v0.0.0-20230716160321-8969d1f05a45/go.mod h1:Kgvk5uZPhFlZvcS8u0zOB38emtWGrUgnfOvjINkvhyM=
 github.com/mattn/go-colorable v0.1.13 h1:fFA4WZxdEF4tXPZVKMLwD8oUnCTTo08duU7wxecdEvA=
@@ -7,8 +9,6 @@ github.com/mattn/go-colorable v0.1.13/go.mod h1:7S9/ev0klgBDR4GtXTXX8a3vIGJpMovk
 github.com/mattn/go-isatty v0.0.16/go.mod h1:kYGgaQfpe5nmfYZH+SKPsOc2e4SrIfOl2e/yFXSvRLM=
 github.com/mattn/go-isatty v0.0.17 h1:BTarxUcIeDqL27Mc+vyvdWYSL28zpIhv3RoTdsLMPng=
 github.com/mattn/go-isatty v0.0.17/go.mod h1:kYGgaQfpe5nmfYZH+SKPsOc2e4SrIfOl2e/yFXSvRLM=
-github.com/zyedidia/highlight v0.0.0-20200217010119-291680feaca1 h1:8oQDIgT8V1yyEoEvvoXkSfoJgSst+dUEwunxq8fbs1c=
-github.com/zyedidia/highlight v0.0.0-20200217010119-291680feaca1/go.mod h1:c1r+Ob9tUTPB0FKWO1+x+Hsc/zNa45WdGq7Y38Ybip0=
 golang.org/x/sys v0.0.0-20220811171246-fbc7d0a398ab/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
 golang.org/x/sys v0.6.0 h1:MVltZSvRTcU2ljQOhs94SXPftV6DCNnZViHeQps87pQ=
 golang.org/x/sys v0.6.0/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
