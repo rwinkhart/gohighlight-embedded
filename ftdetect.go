@@ -9,9 +9,9 @@ func DetectFiletype(defs []*Def, filename string, firstLine []byte) *Def {
 			return d
 		}
 		if len(d.ftdetect) > 1 {
-		    if d.ftdetect[1].MatchString(string(firstLine)) {
-			return d
-		    }
+			if d.ftdetect[1].MatchString(string(firstLine)) {
+				return d
+			}
 		}
 	}
 

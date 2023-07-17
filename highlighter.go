@@ -1,11 +1,11 @@
 package highlight
 
 import (
+	"io/ioutil"
+	"path/filepath"
 	"regexp"
 	"strings"
 	"unicode/utf8"
-	"path/filepath"
-	"io/ioutil"
 )
 
 // RunePos returns the rune index of a given byte index
@@ -62,27 +62,27 @@ func NewHighlighter(def *Def) *Highlighter {
 // color's group (represented as one byte)
 type LineMatch map[int]Group
 
-func ParseSyntaxFiles (dir string, defs *[]*Def) error{
-   pattern := "*.yaml"
-   files, err := filepath.Glob(dir + "/" + pattern)
-   if err != nil {
-      return err
-   }
-
-   for _, file_path := range(files){
-	file, err := ioutil.ReadFile(file_path)
+func ParseSyntaxFiles(dir string, defs *[]*Def) error {
+	pattern := "*.yaml"
+	files, err := filepath.Glob(dir + "/" + pattern)
 	if err != nil {
 		return err
 	}
 
-	d, err := ParseDef(file)
-	if err != nil {
-		return err
-		continue
+	for _, file_path := range files {
+		file, err := ioutil.ReadFile(file_path)
+		if err != nil {
+			return err
+		}
+
+		d, err := ParseDef(file)
+		if err != nil {
+			return err
+			continue
+		}
+		*defs = append(*defs, d)
 	}
-	*defs = append(*defs, d)
-    }
-    return nil
+	return nil
 }
 
 func findIndex(regex *regexp.Regexp, skip *regexp.Regexp, str []rune, canMatchStart, canMatchEnd bool) []int {
@@ -225,9 +225,8 @@ func (h *Highlighter) highlightRegion(highlights LineMatch, start int, canMatchE
 
 func (h *Highlighter) highlightEmptyRegion(highlights LineMatch, start int, canMatchEnd bool, lineNum int, line []rune, statesOnly bool) LineMatch {
 	if h.Def.rules == nil {
-            return nil
-        }
-
+		return nil
+	}
 
 	if len(line) == 0 {
 		if canMatchEnd {

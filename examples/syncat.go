@@ -4,9 +4,9 @@ import (
 	"bytes"
 	"fmt"
 	"io/ioutil"
+	"log"
 	"os"
 	"strings"
-	"log"
 
 	"github.com/fatih/color"
 	"github.com/jessp01/highlight"
@@ -22,16 +22,16 @@ func main() {
 
 	var syn_dir string
 	if gopath == "" {
-	    syn_dir = "/etc/highlight"
-	}else{
-	    syn_dir = gopath + "/src/github.com/jessp01/highlight/syntax_files"
+		syn_dir = "/etc/highlight"
+	} else {
+		syn_dir = gopath + "/src/github.com/jessp01/highlight/syntax_files"
 	}
 
 	syn_dir = os.Getenv("SYNDIR")
 	var defs []*highlight.Def
-	err := highlight.ParseSyntaxFiles (syn_dir, &defs)
+	err := highlight.ParseSyntaxFiles(syn_dir, &defs)
 	if err != nil {
-	    log.Fatal(err)
+		log.Fatal(err)
 	}
 
 	highlight.ResolveIncludes(defs)
