@@ -3,13 +3,11 @@
 [![GoDoc](https://godoc.org/github.com/jessp01/highlight?status.svg)](http://godoc.org/github.com/jessp01/highlight)
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/jessp01/highlight/blob/master/LICENSE)
 
-This is a package for syntax highlighting a large number of different languages. To see the list of
-languages currently supported, see the [`syntax_files`](./syntax_files) directory.
+`highlight` is a syntax highlighter of programming languages, config formats and UNIX commands. 
+It allows you to pass in a string and get back all the information you need to properly highlight it..
+This repo includes over a 100 different lexers and contributions are most welcome:)
 
-Highlight allows you to pass in a string and get back all the information you need to syntax highlight
-that string well.
-
-This project is still a work in progress and more features and documentation will be coming later.
+See [Revising and adding new lexers](#Revising and adding new lexers) for more info.
 
 ## A note about this repo
 
@@ -29,13 +27,14 @@ Below is a recap of the main changes made since:
 go get github.com/jessp01/highlight
 ```
 
+Be sure to point your code to the correct path of `syntax_files`.
+
 ## Basic Usage
 
 Below is a simple example for highlighting a string (a Go snippet in this case). 
 It uses `github.com/fatih/color` to actually colorize the output to the console.
 
-A more comprehensive example is [zaje](https://github.com/jessp01/zaje); a Syntax highlighter to cover all your shell needs (it can replace `cat` and `tail`).
-
+**NOTE: A more comprehensive example is [zaje](https://github.com/jessp01/zaje); a Syntax highlighter to cover all your shell needs (it can replace `cat` and `tail`).**
 
 ```go
 package main
@@ -152,14 +151,11 @@ fmt.Println("Filetype is", def.FileType)
 ## Revising and adding new lexers
 
 Lexers are YML files that live under the [syntax\_files](./syntax_files) dir.
-They can be loaded individually:
 
+They can be loaded individually:
 ```go
     syntaxFile, lerr := ioutil.ReadFile("highlight/syntax_files/go.yaml")
     syntaxDef, err := highlight.ParseDef(syntaxFile)
 ```
 
 Or, you can scan the dir and load them all using the `highlight.ParseSyntaxFiles(syn_dir, &defs)()` helper function.
-
-This repo includes over a 100 different lexers and contributions are most welcome:)
-
