@@ -7,7 +7,7 @@
 It allows you to pass in a string and get back all the information you need to properly highlight it..
 This repo includes over a 100 different lexers and contributions are most welcome:)
 
-See [Revising and adding new lexers](#Revising and adding new lexers) for more info.
+See [Revising and adding new lexers](#revising-and-adding-new-lexers) for more info.
 
 ## A note about this repo
 
