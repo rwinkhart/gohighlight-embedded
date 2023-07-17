@@ -24,7 +24,7 @@ func main() {
 	if gopath == "" {
 		syn_dir = "/etc/highlight"
 	} else {
-		syn_dir = gopath + "/src/github.com/jessp01/highlight/syntax_files"
+		syn_dir = gopath + "/src/github.com/jessp01/gohighlight/syntax_files"
 	}
 
 	syn_dir = os.Getenv("SYNDIR")
