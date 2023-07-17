@@ -1,7 +1,7 @@
 # Highlight
-[![Go Report Card](https://goreportcard.com/badge/github.com/zyedidia/highlight)](https://goreportcard.com/report/github.com/zyedidia/highlight)
-[![GoDoc](https://godoc.org/github.com/zyedidia/highlight?status.svg)](http://godoc.org/github.com/zyedidia/highlight)
-[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/zyedidia/highlight/blob/master/LICENSE)
+[![Go Report Card](https://goreportcard.com/badge/github.com/jessp01/highlight)](https://goreportcard.com/report/github.com/jessp01/highlight)
+[![GoDoc](https://godoc.org/github.com/jessp01/highlight?status.svg)](http://godoc.org/github.com/jessp01/highlight)
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/jessp01/highlight/blob/master/LICENSE)
 
 This is a package for syntax highlighting a large number of different languages. To see the list of
 languages currently supported, see the [`syntax_files`](./syntax_files) directory.
@@ -11,16 +11,31 @@ that string well.
 
 This project is still a work in progress and more features and documentation will be coming later.
 
-# Installation
+## A note about this repo
+
+This is a fork of [zyedidia/highlight](https://github.com/zyedidia/highlight). 
+I originally submitted pulls against it but it seems to be unmaintained (last commit was in 2020).
+
+Below is a recap of the main changes made since:
+- Helper method to parse syntax files
+- Better exception handling
+- Corrections/additions to existing lexers
+- Addition of new lexers
+- Revisions to the code examples
+
+## Installation
 
 ```
-go get github.com/zyedidia/highlight
+go get github.com/jessp01/highlight
 ```
 
-# Usage
+## Basic Usage
 
-Here is how to use this package to highlight a string. We will also be using `github.com/fatih/color` to actually
-colorize the output to the console.
+Below is a simple example for highlighting a string (a Go snippet in this case). 
+It uses `github.com/fatih/color` to actually colorize the output to the console.
+
+A more comprehensive example is [zaje](https://github.com/jessp01/zaje); a Syntax highlighter to cover all your shell needs (it can replace `cat` and `tail`).
+
 
 ```go
 package main
@@ -31,7 +46,7 @@ import (
     "strings"
 
     "github.com/fatih/color"
-    "github.com/zyedidia/highlight"
+    "github.com/jessp01/highlight"
 )
 
 func main() {
@@ -75,26 +90,33 @@ func helloWorld() {
         for colN, c := range l {
             // Check if the group changed at the current position
             if group, ok := matches[lineN][colN]; ok {
-                // Check the group name and set the color accordingly (the colors chosen are arbitrary)
-                if group == highlight.Groups["statement"] {
-                    color.Set(color.FgGreen)
-                } else if group == highlight.Groups["preproc"] {
-                    color.Set(color.FgHiRed)
-                } else if group == highlight.Groups["special"] {
-                    color.Set(color.FgBlue)
-                } else if group == highlight.Groups["constant.string"] {
-                    color.Set(color.FgCyan)
-                } else if group == highlight.Groups["constant.specialChar"] {
-                    color.Set(color.FgHiMagenta)
-                } else if group == highlight.Groups["type"] {
-                    color.Set(color.FgYellow)
-                } else if group == highlight.Groups["constant.number"] {
-                    color.Set(color.FgCyan)
-                } else if group == highlight.Groups["comment"] {
-                    color.Set(color.FgHiGreen)
-                } else {
-                    color.Unset()
-                }
+		    switch group {
+		    case highlight.Groups["statement"]:
+			    color.Set(color.FgGreen)
+		    // There are more possible groups available than just these ones
+		    case highlight.Groups["statement"]:
+			    color.Set(color.FgGreen)
+		    case highlight.Groups["identifier"]:
+			    color.Set(color.FgBlue)
+		    case highlight.Groups["preproc"]:
+			    color.Set(color.FgHiRed)
+		    case highlight.Groups["special"]:
+			    color.Set(color.FgRed)
+		    case highlight.Groups["constant.string"]:
+			    color.Set(color.FgCyan)
+		    case highlight.Groups["constant"]:
+			    color.Set(color.FgCyan)
+		    case highlight.Groups["constant.specialChar"]:
+			    color.Set(color.FgHiMagenta)
+		    case highlight.Groups["type"]:
+			    color.Set(color.FgYellow)
+		    case highlight.Groups["constant.number"]:
+			    color.Set(color.FgCyan)
+		    case highlight.Groups["comment"]:
+			    color.Set(color.FgHiGreen)
+		    default:
+			    color.Unset()
+		    }
             }
             // Print the character
             fmt.Print(string(c))
@@ -111,8 +133,7 @@ func helloWorld() {
 }
 ```
 
-If you would like to automatically detect the filetype of a file based on the filename, and have the appropriate definition returned,
-you can use the `DetectFiletype` function:
+If you would like to automatically detect the filetype based on the filename, you can use the `DetectFiletype()` function:
 
 ```go
 // Name of the file
@@ -128,4 +149,17 @@ def := highlight.DetectFiletype(defs, filename, firstLine)
 fmt.Println("Filetype is", def.FileType)
 ```
 
-For a full example, see the [`syncat`](./examples) example which acts like cat but will syntax highlight the output (if highlight recognizes the filetype).
+## Revising and adding new lexers
+
+Lexers are YML files that live under the [syntax\_files](./syntax_files) dir.
+They can be loaded individually:
+
+```go
+    syntaxFile, lerr := ioutil.ReadFile("highlight/syntax_files/go.yaml")
+    syntaxDef, err := highlight.ParseDef(syntaxFile)
+```
+
+Or, you can scan the dir and load them all using the `highlight.ParseSyntaxFiles(syn_dir, &defs)()` helper function.
+
+This repo includes over a 100 different lexers and contributions are most welcome:)
+
