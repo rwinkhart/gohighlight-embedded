@@ -20,6 +20,7 @@ Below is a recap of the main changes made since:
 - Corrections/additions to existing lexers
 - Addition of new lexers
 - Revisions to the code examples
+- Basic unit tests (still more to do on that)
 
 ## Installation
 
