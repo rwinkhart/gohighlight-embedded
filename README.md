@@ -87,49 +87,68 @@ func helloWorld() {
     // Now we will print the string
     lines := strings.Split(inputString, "\n")
     for lineN, l := range lines {
-        for colN, c := range l {
-            // Check if the group changed at the current position
-            if group, ok := matches[lineN][colN]; ok {
-		    switch group {
-		    case highlight.Groups["statement"]:
-			    color.Set(color.FgGreen)
-		    // There are more possible groups available than just these ones
-		    case highlight.Groups["statement"]:
-			    color.Set(color.FgGreen)
-		    case highlight.Groups["identifier"]:
-			    color.Set(color.FgBlue)
-		    case highlight.Groups["preproc"]:
-			    color.Set(color.FgHiRed)
-		    case highlight.Groups["special"]:
-			    color.Set(color.FgRed)
-		    case highlight.Groups["constant.string"]:
-			    color.Set(color.FgCyan)
-		    case highlight.Groups["constant"]:
-			    color.Set(color.FgCyan)
-		    case highlight.Groups["constant.specialChar"]:
-			    color.Set(color.FgHiMagenta)
-		    case highlight.Groups["type"]:
-			    color.Set(color.FgYellow)
-		    case highlight.Groups["constant.number"]:
-			    color.Set(color.FgCyan)
-		    case highlight.Groups["comment"]:
-			    color.Set(color.FgHiGreen)
-		    default:
+	    colN := 0
+	    for _, c := range l {
+		    if group, ok := matches[lineN][colN]; ok {
+			    switch group {
+			    case highlight.Groups["statement"]:
+				    fallthrough
+			    case highlight.Groups["green"]:
+				    color.Set(color.FgGreen)
+
+			    case highlight.Groups["identifier"]:
+				    fallthrough
+			    case highlight.Groups["blue"]:
+				    color.Set(color.FgHiBlue)
+
+			    case highlight.Groups["preproc"]:
+				    //fallthrough
+				    //case highlight.Groups["high.red"]:
+				    color.Set(color.FgHiRed)
+
+			    case highlight.Groups["special"]:
+				    fallthrough
+			    case highlight.Groups["red"]:
+				    color.Set(color.FgRed)
+
+			    case highlight.Groups["constant.string"]:
+				    fallthrough
+			    case highlight.Groups["constant"]:
+				    fallthrough
+			    case highlight.Groups["constant.number"]:
+				    fallthrough
+			    case highlight.Groups["cyan"]:
+				    color.Set(color.FgCyan)
+
+			    case highlight.Groups["constant.specialChar"]:
+				    fallthrough
+			    case highlight.Groups["magenta"]:
+				    color.Set(color.FgHiMagenta)
+
+			    case highlight.Groups["type"]:
+				    fallthrough
+			    case highlight.Groups["yellow"]:
+				    color.Set(color.FgYellow)
+
+			    case highlight.Groups["comment"]:
+				    fallthrough
+			    case highlight.Groups["high.green"]:
+				    color.Set(color.FgHiGreen)
+			    default:
+				    color.Unset()
+			    }
+		    }
+		    fmt.Print(string(c))
+		    colN++
+	    }
+	    if group, ok := matches[lineN][colN]; ok {
+		    if group == highlight.Groups["default"] || group == highlight.Groups[""] {
 			    color.Unset()
 		    }
-            }
-            // Print the character
-            fmt.Print(string(c))
-        }
-        // This is at a newline, but highlighting might have been turned off at the very end of the line so we should check that.
-        if group, ok := matches[lineN][len(l)]; ok {
-            if group == highlight.Groups["default"] || group == highlight.Groups[""] {
-                color.Unset()
-            }
-        }
+	    }
 
-	color.Unset()
-        fmt.Print("\n")
+	    color.Unset()
+	    fmt.Print("\n")
     }
 }
 ```
