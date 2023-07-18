@@ -1,12 +1,10 @@
 package highlight
 
 import (
-        "bytes"
-        "io/ioutil"
-        "testing"
-
-    )
-
+	"bytes"
+	"io/ioutil"
+	"testing"
+)
 
 func getDefs(t *testing.T, filename string, data []byte, highlight_lexer string) *Def {
 	var def *Def
