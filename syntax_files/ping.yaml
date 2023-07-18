@@ -24,4 +24,5 @@ rules:
     - red: "DUP\\!"
     - red: "(Destination Host Unreachable|100(\\.0)?% packet loss)"
     - red: ".+unknown\\shost\\s(.+)"
+    - red: "Temporary failure in name resolution"
 

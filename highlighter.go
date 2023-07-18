@@ -62,27 +62,28 @@ func NewHighlighter(def *Def) *Highlighter {
 // color's group (represented as one byte)
 type LineMatch map[int]Group
 
-func ParseSyntaxFiles(dir string, defs *[]*Def) error {
+func ParseSyntaxFiles(dir string, defs *[]*Def) (error, []string){
 	pattern := "*.yaml"
 	files, err := filepath.Glob(dir + "/" + pattern)
+	var warnings []string
 	if err != nil {
-		return err
+		return err, nil
 	}
 
 	for _, file_path := range files {
 		file, err := ioutil.ReadFile(file_path)
 		if err != nil {
-			return err
+			warnings = append(warnings,err.Error())
+		}else {
+		    d, err := ParseDef(file)
+		    if err != nil {
+			    warnings = append(warnings,err.Error())
+		    }else{
+			*defs = append(*defs, d)
+		    }
 		}
-
-		d, err := ParseDef(file)
-		if err != nil {
-			return err
-			continue
-		}
-		*defs = append(*defs, d)
 	}
-	return nil
+	return err, warnings
 }
 
 func findIndex(regex *regexp.Regexp, skip *regexp.Regexp, str []rune, canMatchStart, canMatchEnd bool) []int {

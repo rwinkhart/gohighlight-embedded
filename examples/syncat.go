@@ -28,10 +28,13 @@ func main() {
 	}
 
 	var defs []*highlight.Def
-	err := highlight.ParseSyntaxFiles(syn_dir, &defs)
+	err, warnings := highlight.ParseSyntaxFiles(syn_dir, &defs)
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	// it's up to you what to do with the warnings. You can print them or ignore them
+	fmt.Println(warnings)
 
 	highlight.ResolveIncludes(defs)
 
