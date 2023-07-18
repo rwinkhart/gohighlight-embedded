@@ -62,7 +62,7 @@ func NewHighlighter(def *Def) *Highlighter {
 // color's group (represented as one byte)
 type LineMatch map[int]Group
 
-func ParseSyntaxFiles(dir string, defs *[]*Def) (error, []string){
+func ParseSyntaxFiles(dir string, defs *[]*Def) (error, []string) {
 	pattern := "*.yaml"
 	files, err := filepath.Glob(dir + "/" + pattern)
 	var warnings []string
@@ -73,14 +73,14 @@ func ParseSyntaxFiles(dir string, defs *[]*Def) (error, []string){
 	for _, file_path := range files {
 		file, err := ioutil.ReadFile(file_path)
 		if err != nil {
-			warnings = append(warnings,err.Error())
-		}else {
-		    d, err := ParseDef(file)
-		    if err != nil {
-			    warnings = append(warnings,err.Error())
-		    }else{
-			*defs = append(*defs, d)
-		    }
+			warnings = append(warnings, err.Error())
+		} else {
+			d, err := ParseDef(file)
+			if err != nil {
+				warnings = append(warnings, err.Error())
+			} else {
+				*defs = append(*defs, d)
+			}
 		}
 	}
 	return err, warnings
