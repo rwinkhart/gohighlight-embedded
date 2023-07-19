@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"io/ioutil"
 	"testing"
+	"strings"
 )
 
 func getDefs(t *testing.T, filename string, data []byte, highlight_lexer string) *Def {
@@ -11,10 +12,14 @@ func getDefs(t *testing.T, filename string, data []byte, highlight_lexer string)
 	syn_dir := "./syntax_files"
 
 	var defs []*Def
-	lerr := ParseSyntaxFiles(syn_dir, &defs)
+	lerr, warnings := ParseSyntaxFiles(syn_dir, &defs)
 	if lerr != nil {
 		t.Errorf("Couldn't get defs from '%s', error: %v\n", syn_dir, lerr)
 	}
+	if (len(warnings) > 0){
+	    t.Errorf("Parsing ended with warnings: '%s'\n", strings.Join(warnings,";"))
+	}
+
 	ResolveIncludes(defs)
 
 	// Always try to auto detect the best lexer:was
