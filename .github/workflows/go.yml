@@ -25,4 +25,7 @@ jobs:
       run: cd examples && go mod tidy && go build syncat.go
 
     - name: Test
-      run: go test -v 
+      run: | 
+        FMT_ISSUES=$(gofmt -l .)
+        if test -n "$FMT_ISSUES" ;then printf "gofmt found problems:\n$FMT_ISSUES\n";exit 11; fi
+        go test -v 
