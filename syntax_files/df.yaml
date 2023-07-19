@@ -1,4 +1,4 @@
-filetype: ping
+filetype: df
 
 detect: 
     filename: "\\.df$"
