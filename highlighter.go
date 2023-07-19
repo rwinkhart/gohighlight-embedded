@@ -73,12 +73,12 @@ func ParseSyntaxFiles(dir string, defs *[]*Def) (error, []string) {
 	for _, file_path := range files {
 		file, err := ioutil.ReadFile(file_path)
 		if err != nil {
-			warnings = append(warnings, err.Error())
+			warnings = append(warnings, file_path+": "+err.Error())
 		} else {
 			if len(file) > 0 {
 				d, err := ParseDef(file)
 				if err != nil {
-					warnings = append(warnings, err.Error())
+					warnings = append(warnings, file_path+": "+err.Error())
 				} else {
 					*defs = append(*defs, d)
 				}
