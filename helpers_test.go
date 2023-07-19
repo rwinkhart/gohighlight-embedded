@@ -9,7 +9,7 @@ import (
 
 func getDefs(t *testing.T, filename string, data []byte, highlight_lexer string) *Def {
 	var def *Def
-    syn_dir := "./syntax_files"
+	syn_dir := "./syntax_files"
 
 	var defs []*Def
 	lerr, warnings := ParseSyntaxFiles(syn_dir, &defs)
