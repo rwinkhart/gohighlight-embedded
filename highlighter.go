@@ -75,11 +75,13 @@ func ParseSyntaxFiles(dir string, defs *[]*Def) (error, []string) {
 		if err != nil {
 			warnings = append(warnings, err.Error())
 		} else {
-			d, err := ParseDef(file)
-			if err != nil {
-				warnings = append(warnings, err.Error())
-			} else {
-				*defs = append(*defs, d)
+			if len(file) > 0 {
+				d, err := ParseDef(file)
+				if err != nil {
+					warnings = append(warnings, err.Error())
+				} else {
+					*defs = append(*defs, d)
+				}
 			}
 		}
 	}
