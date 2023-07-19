@@ -3,8 +3,8 @@ package highlight
 import (
 	"bytes"
 	"io/ioutil"
-	"testing"
 	"strings"
+	"testing"
 )
 
 func getDefs(t *testing.T, filename string, data []byte, highlight_lexer string) *Def {
@@ -16,8 +16,8 @@ func getDefs(t *testing.T, filename string, data []byte, highlight_lexer string)
 	if lerr != nil {
 		t.Errorf("Couldn't get defs from '%s', error: %v\n", syn_dir, lerr)
 	}
-	if (len(warnings) > 0){
-	    t.Errorf("Parsing ended with warnings: '%s'\n", strings.Join(warnings,";"))
+	if len(warnings) > 0 {
+		t.Errorf("Parsing ended with warnings: '%s'\n", strings.Join(warnings, ";"))
 	}
 
 	ResolveIncludes(defs)
