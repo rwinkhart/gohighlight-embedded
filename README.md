@@ -25,7 +25,7 @@ Below is a recap of the main changes made since:
 ## Installation
 
 ```
-$ go get github.com/jessp01/highlight
+$ go get github.com/jessp01/gohighlight
 ```
 
 Be sure to point your code to the correct path of `syntax_files`.
@@ -46,7 +46,7 @@ import (
     "strings"
 
     "github.com/fatih/color"
-    "github.com/jessp01/highlight"
+    "github.com/jessp01/gohighlight"
 )
 
 func main() {
