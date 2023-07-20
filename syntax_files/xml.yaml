@@ -2,7 +2,7 @@ filetype: xml
 
 detect:
     filename: "\\.(xml|sgml?|rng|plist)$"
-    header: "(<rss|<!DOCTYPE|<xsd)"
+    header: "(<rss|<!DOCTYPE|<xsd|<\\?xml)"
 
 rules:
     - type: "(<(/)?[a-zA-Z:]+>)"
