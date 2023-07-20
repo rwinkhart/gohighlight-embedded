@@ -2,9 +2,14 @@ filetype: xml
 
 detect:
     filename: "\\.(xml|sgml?|rng|plist)$"
+    header: "(<rss|<!DOCTYPE|<xsd)"
 
 rules:
-    - identifier: "<.*?>"
+    - type: "(<(/)?[a-zA-Z:]+>)"
+    - type: "(<(/)?[a-zA-Z:]+[[:space:]]+)"
+    - constant.specialChar: '[a-zA-Z0-9]+="(.*)+"'
+    - statement: '([a-zA-Z0-9]+)='
+    - type: "(([[:space:]])?/?>([[:space:]]+)?$)"
     - comment:
         start: "<!DOCTYPE"
         end: "[/]?>"
