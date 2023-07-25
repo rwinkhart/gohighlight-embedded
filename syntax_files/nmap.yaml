@@ -13,10 +13,6 @@ rules:
     - red: "Failed\\sto\\sresolve\\s\"(\\S+)\""
     # IP
     - yellow: "\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}"
-    # IP v6
-    - yellow: "(([0-9a-fA-F]{1,4})?\\:\\:?[0-9a-fA-F]{1,4})+"
-    # hostname
-    - yellow: "\\s+([a-z-]+\\.)?[a-z-]+\\.[a-z-]+\\.[a-z-]+"
     # Ports
     - green: "^(\\d+)"
     - red: "/(\\w+)\\s+(\\w+)\\s+(\\S+)"
@@ -33,7 +29,11 @@ rules:
     - yellow: "\\sfiltered\\s"
     - red: "\\sclosed\\s"
     - cyan: "\\sunfiltered\\s"
-    - constant.number: "(\\b[0-9.]+\\b|\\b0x[0-9A-Fa-f]+\\b)([ms|s|seconds])?(\\s+|$)"
-    - yellow: "\\d{1,4}-\\d{1,2}-\\d{1,2}\\s\\d{1,2}:\\d{1,2}"
+    - yellow: "(Service Info|OS details|Device type|Running):\\s.*$"
     # Closed ports
     - red: "Not shown: (\\d+)\\s(closed|filtered)\\sports"
+    - constant.number: "(\\b[0-9.]+\\b|\\b0x[0-9A-Fa-f]+\\b)([ms|s|seconds])?(\\s+|$)"
+    - yellow: "\\d{4}-\\d{2}-\\d{2}\\s\\d{2}:\\d{2}(:\\d{2})?"
+    - yellow: "\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}"
+    # hostname
+    - yellow: "\\s+([a-z-]+\\.)?[a-z-]+\\.[a-z-]+\\.[a-z-]+"
