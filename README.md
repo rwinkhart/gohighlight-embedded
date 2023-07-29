@@ -24,7 +24,7 @@ Below is a recap of the main changes made since:
 
 ## Installation
 
-```
+```sh
 $ go get github.com/jessp01/gohighlight
 ```
 
