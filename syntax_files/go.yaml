@@ -2,7 +2,7 @@ filetype: go
 
 detect:
     filename: "\\.go$"
-    header: "^package\\s.*"
+    header: "(^package\\s.*)"
 
 rules:
     # Conditionals and control flow
