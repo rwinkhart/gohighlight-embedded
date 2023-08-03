@@ -10,10 +10,10 @@ import (
 
 func TestInputs(t *testing.T) {
 
-	test_inputs_dir := "./test_inputs/*"
-	files, err := filepath.Glob(test_inputs_dir)
+	testInputsDir := "./test_inputs/*"
+	files, err := filepath.Glob(testInputsDir)
 	if err != nil {
-		t.Errorf("Couldn't open '%s', error: %v\n", test_inputs_dir, err)
+		t.Errorf("Couldn't open '%s', error: %v\n", testInputsDir, err)
 	}
 	for _, filename := range files {
 		ext := strings.Split(filename, ".")
@@ -23,7 +23,7 @@ func TestInputs(t *testing.T) {
 		exp := ext[len(ext)-1]
 		if def.FileType != exp {
 			t.Errorf("\nInput   [%#v]\nExpected[%#v]\nGot     [%#v]\n",
-				//string(data), exp, def.FileType)
+				// string(data), exp, def.FileType)
 				filename, exp, def.FileType)
 		}
 	}

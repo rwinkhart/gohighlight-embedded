@@ -5,7 +5,7 @@ import (
 	"io/ioutil"
 	"strings"
 
-	"github.com/jessp01/gohighlight"
+	highlight "github.com/jessp01/gohighlight"
 )
 
 func main() {

@@ -9,7 +9,7 @@ import (
 	"strings"
 
 	"github.com/fatih/color"
-	"github.com/jessp01/gohighlight"
+	highlight "github.com/jessp01/gohighlight"
 )
 
 func main() {
@@ -20,15 +20,15 @@ func main() {
 
 	gopath := os.Getenv("GOPATH")
 
-	var syn_dir string
+	var synDir string
 	if gopath == "" {
-		syn_dir = os.Getenv("HOME") + "/.config/zaje/syntax_files"
+		synDir = os.Getenv("HOME") + "/.config/zaje/syntax_files"
 	} else {
-		syn_dir = gopath + "/src/github.com/jessp01/gohighlight/syntax_files"
+		synDir = gopath + "/src/github.com/jessp01/gohighlight/syntax_files"
 	}
 
 	var defs []*highlight.Def
-	err, warnings := highlight.ParseSyntaxFiles(syn_dir, &defs)
+	warnings, err := highlight.ParseSyntaxFiles(synDir, &defs)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -67,8 +67,6 @@ func main() {
 					color.Set(color.FgHiBlue)
 
 				case highlight.Groups["preproc"]:
-					//fallthrough
-					//case highlight.Groups["high.red"]:
 					color.Set(color.FgHiRed)
 
 				case highlight.Groups["special"]:

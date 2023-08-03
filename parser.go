@@ -87,11 +87,11 @@ func ParseDef(input []byte) (s *Def, err error) {
 	s = new(Def)
 
 	for k, v := range rules {
-		if k == "filetype" {
+		switch k {
+		case "filetype":
 			filetype := v.(string)
-
 			s.FileType = filetype
-		} else if k == "detect" {
+		case "detect":
 			ftdetect := v.(map[interface{}]interface{})
 			if len(ftdetect) >= 1 {
 				syntax, err := regexp.Compile(ftdetect["filename"].(string))
@@ -109,7 +109,7 @@ func ParseDef(input []byte) (s *Def, err error) {
 
 				s.ftdetect = append(s.ftdetect, header)
 			}
-		} else if k == "rules" {
+		case "rules":
 			inputRules := v.([]interface{})
 
 			rules, err := parseRules(inputRules, nil)

@@ -62,30 +62,29 @@ func NewHighlighter(def *Def) *Highlighter {
 // color's group (represented as one byte)
 type LineMatch map[int]Group
 
-func ParseSyntaxFiles(dir string, defs *[]*Def) (error, []string) {
+// ParseSyntaxFiles builds def array from YAML files in dir
+func ParseSyntaxFiles(dir string, defs *[]*Def) ([]string, error) {
 	pattern := "*.yaml"
 	files, err := filepath.Glob(dir + "/" + pattern)
 	var warnings []string
 	if err != nil {
-		return err, nil
+		return nil, err
 	}
 
-	for _, file_path := range files {
-		file, err := ioutil.ReadFile(file_path)
+	for _, filePath := range files {
+		file, err := ioutil.ReadFile(filePath)
 		if err != nil {
-			warnings = append(warnings, file_path+": "+err.Error())
-		} else {
-			if len(file) > 0 {
-				d, err := ParseDef(file)
-				if err != nil {
-					warnings = append(warnings, file_path+": "+err.Error())
-				} else {
-					*defs = append(*defs, d)
-				}
+			warnings = append(warnings, filePath+": "+err.Error())
+		} else if len(file) > 0 {
+			d, err := ParseDef(file)
+			if err != nil {
+				warnings = append(warnings, filePath+": "+err.Error())
+			} else {
+				*defs = append(*defs, d)
 			}
 		}
 	}
-	return err, warnings
+	return warnings, err
 }
 
 func findIndex(regex *regexp.Regexp, skip *regexp.Regexp, str []rune, canMatchStart, canMatchEnd bool) []int {

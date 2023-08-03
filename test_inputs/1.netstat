@@ -1,0 +1,30 @@
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
+tcp        0      0 0.0.0.0:35211           0.0.0.0:*               LISTEN      -                   
+tcp        0      0 0.0.0.0:51435           0.0.0.0:*               LISTEN      1798003/rpc.mountd  
+tcp        0      0 0.0.0.0:2049            0.0.0.0:*               LISTEN      -                   
+tcp        0      0 0.0.0.0:51311           0.0.0.0:*               LISTEN      1797998/rpc.statd   
+tcp        0      0 127.0.0.1:53            0.0.0.0:*               LISTEN      1803502/connmand    
+tcp        0      0 127.0.0.1:631           0.0.0.0:*               LISTEN      2384685/cupsd       
+tcp        0      0 127.0.0.1:3306          0.0.0.0:*               LISTEN      1798145/mariadbd    
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      1798150/sshd: /usr/ 
+tcp        0      0 0.0.0.0:25              0.0.0.0:*               LISTEN      1798810/master      
+tcp        0      0 0.0.0.0:111             0.0.0.0:*               LISTEN      1/systemd           
+tcp        0      0 127.0.0.1:35765         0.0.0.0:*               LISTEN      878/containerd      
+tcp        0      0 127.0.0.1:3000          0.0.0.0:*               LISTEN      2082789/node        
+tcp        0      0 0.0.0.0:46613           0.0.0.0:*               LISTEN      1798003/rpc.mountd  
+tcp        0      0 0.0.0.0:54439           0.0.0.0:*               LISTEN      1798003/rpc.mountd  
+tcp6       0      0 :::2049                 :::*                    LISTEN      -                   
+tcp6       0      0 :::36647                :::*                    LISTEN      1798003/rpc.mountd  
+tcp6       0      0 ::1:631                 :::*                    LISTEN      2384685/cupsd       
+tcp6       0      0 ::1:53                  :::*                    LISTEN      1803502/connmand    
+tcp6       0      0 :::443                  :::*                    LISTEN      1803521/apache2     
+tcp6       0      0 :::33167                :::*                    LISTEN      -                   
+tcp6       0      0 :::22                   :::*                    LISTEN      1798150/sshd: /usr/ 
+tcp6       0      0 :::25                   :::*                    LISTEN      1798810/master      
+tcp6       0      0 :::111                  :::*                    LISTEN      1/systemd           
+tcp6       0      0 :::80                   :::*                    LISTEN      1803521/apache2     
+tcp6       0      0 :::49243                :::*                    LISTEN      1798003/rpc.mountd  
+tcp6       0      0 :::55779                :::*                    LISTEN      1798003/rpc.mountd  
+tcp6       0      0 :::57253                :::*                    LISTEN      1797998/rpc.statd   
+tcp6       0      0 :::7373                 :::*                    LISTEN      1803521/apache2     
