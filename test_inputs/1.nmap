@@ -1,0 +1,11 @@
+Starting Nmap 7.80 ( https://nmap.org ) at 2023-08-03 18:47 BST
+Nmap scan report for debian.org (128.31.0.62)
+Host is up (0.078s latency).
+Other addresses for debian.org (not scanned): 2001:67c:2564:a119::77 2001:4f8:1:c::15 2603:400a:ffff:bb8::801f:3e 130.89.148.77 149.20.4.15
+rDNS record for 128.31.0.62: mirror-csail.debian.org
+Not shown: 996 filtered ports
+PORT     STATE SERVICE
+80/tcp   open  http
+443/tcp  open  https
+8080/tcp open  http-proxy
+8443/tcp open  https-alt
