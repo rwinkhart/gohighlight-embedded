@@ -1,7 +1,9 @@
 # Highlight
-[![Go Report Card](https://goreportcard.com/badge/github.com/jessp01/gohighlight)](https://goreportcard.com/report/github.com/jessp01/gohighlight)
-[![GoDoc](https://godoc.org/github.com/jessp01/gohighlight?status.svg)](http://godoc.org/github.com/jessp01/gohighlight)
-[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/jessp01/gohighlight/blob/master/LICENSE)
+
+[![CI][badge-build]][build]
+[![GoDoc][go-docs-badge]][go-docs]
+[![GoReportCard][go-report-card-badge]][go-report-card]
+[![License][badge-license]][license]
 
 `gohighlight` is a syntax highlighter of programming languages, config formats and UNIX commands. 
 It allows you to pass in a string and get back all the information you need to properly highlight it..
@@ -153,7 +155,7 @@ func helloWorld() {
 }
 ```
 
-If you would like to automatically detect the filetype based on the filename, you can use the `DetectFiletype()` function:
+If you would like to automatically detect the file type based on the filename, you can use the `DetectFiletype()` function:
 
 ```go
 // Name of the file
@@ -180,3 +182,12 @@ They can be loaded individually:
 ```
 
 Or, you can scan the dir and load them all using the `highlight.ParseSyntaxFiles(syn_dir, &defs)()` helper function.
+
+[license]: ./LICENSE
+[badge-license]: https://img.shields.io/github/license/jessp01/gohighlight.svg
+[go-docs-badge]: https://godoc.org/github.com/jessp01/gohighlight?status.svg
+[go-docs]: https://godoc.org/github.com/jessp01/gohighlight
+[go-report-card-badge]: https://goreportcard.com/badge/github.com/jessp01/gohighlight
+[go-report-card]: https://goreportcard.com/report/github.com/jessp01/gohighlight
+[badge-build]: https://github.com/jessp01/gohighlight/actions/workflows/go.yml/badge.svg
+[build]: https://github.com/jessp01/gohighlight/actions/workflows/go.yml
