@@ -15,14 +15,17 @@ rules:
   # interface
   - cyan: "^([a-z0-9.]{2,}\\d*):?\\s"
   #ip disc
-  - cyan: "(inet6?|netmask|broadcast)"
+  - cyan: "(inet6?|netmask|broadcast|ether|loop)"
   # mtu
   - green: "(?i)mtu(\\s|\\:)\\d+"
   #errors
   - red: "errors(\\s|\\:)\\d+"
   - red: "collisions(\\s|\\:)\\d+"
   - yellow: "flags=(-?\\d+<[A-Z,]+>)"
-  - white: "dropped(\\s|\\:)\\d+"
+  - red: "dropped(\\s|\\:)\\d+"
   - magenta: "overruns(\\s|\\:)\\d+"
-  - white: "frame(\\s|\\:)\\d+"
+  - yellow: "frame(\\s|\\:)\\d+"
+  - yellow: "(Ethernet|Local Loopback)"
   - cyan: "carrier(\\s|\\:)\\d+"
+  - cyan: "packets\\s+\\d+"  
+  - high.green: "bytes\\s+\\d+"
