@@ -13,7 +13,7 @@ rules:
   # size
   - yellow: "\\d+(\\.\\d+)?\\s(T|G|M|K|)i?B"
   # interface
-  - cyan: "^([a-z0-9.]{2,}\\d*):?\\s"
+  - cyan: "^([a-z0-9.-]{2,}\\d*):?\\s"
   #ip disc
   - cyan: "(inet6?|netmask|broadcast|ether|loop)"
   # mtu
