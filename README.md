@@ -173,7 +173,7 @@ fmt.Println("Filetype is", def.FileType)
 
 ## Revising and adding new lexers
 
-Lexers are YML files that live under the [syntax\_files](./syntax_files) dir.
+Lexers are `YAML` files that live under the [syntax\_files](./syntax_files) dir.
 
 They can be loaded individually:
 ```go
