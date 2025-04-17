@@ -14,7 +14,7 @@ rules:
     - yellow: "\\d+\\sbadness"
     - blue: "checks:\\s\\d+"
     - blue: "packages:\\s\\d+"
-    - constant.string: "^([A-Z_a-z_0-9_\\.]+)\\.spec"
+    - constant.string: "^([A-Z_a-z_0-9_\\./]+)\\.spec"
     - constant.string: "^(=+)\\srpmlint session starts\\s(=+)$"
     - preproc: "\\b(BuildArch|BuildArchitectures|ExclusiveArch|ExcludeArch):"
     - preproc: "\\b(Conflicts|Obsoletes|Provides|Requires|Requires\\(.*\\)|Enhances|Suggests|BuildConflicts|BuildRequires|Recommends|PreReq|Supplements):"
