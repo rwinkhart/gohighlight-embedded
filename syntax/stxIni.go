@@ -1,6 +1,12 @@
-filetype: ini
+//go:build stxIni || stxAll
 
-detect: 
+package syntax
+
+func init() {
+	syntaxMap["ini"] = &lazySyntax{init: func() []byte {
+		return []byte(`filetype: ini
+
+detect:
     filename: "\\.(ini|desktop|lfl|override)$|(mimeapps\\.list|pinforc|setup\\.cfg)$|weechat/.+\\.conf$"
     header: "^\\[[A-Za-z]+\\]$"
 
@@ -12,3 +18,6 @@ rules:
     - statement: "[=;]"
     - comment: "(^|[[:space:]])#([^{].*)?$"
     - constant.string: "\"(\\\\.|[^\"])*\"|'(\\\\.|[^'])*'"
+`)
+	}}
+}
