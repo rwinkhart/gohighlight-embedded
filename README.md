@@ -1,29 +1,36 @@
-# Highlight
-
-`gohighlight-embedded` is a syntax highlighter of programming languages and config formats.
+# Highlite
+`go-highlite` is a lightweight ("lite") syntax highlighter of programming languages and config formats.
 It allows you to pass in a string and get back all the information you need to properly highlight it.
-This repo includes lexers for many common languages.
 
 ## A note about this repo
-
-This is a fork of [jessp01/gohighlight](https://github.com/jessp01/gohighlight).
+This is an opinionated hard-fork of [jessp01/gohighlight](https://github.com/jessp01/gohighlight).
 
 It is meant to be a more minimal version with the syntax files embedded in the Go code (no external .yaml files to load).
 
-## Installation
+Language support is determined at build time by using build tags. To include a language, you must build with the appropriate tag.
+For example, to include Go syntax highlighting, you must build with `-tags=stxGo`.
+You may combine as many tags as you like, or use `-tags=stxAll` to include all syntax layers.
 
+### Contributing
+If you would like to contribute a new syntax layer, please contribute to the parent repository [jessp01/gohighlight](https://github.com/jessp01/gohighlight).
+In an effort to minimize the size of this library, the syntax layers are modified to the point of being much less readable than the original.
+Because of this, the parent repository is the canonical source for syntax layers.
+
+I will keep this repository up-to-date with any new syntax layers that are added to the parent repository, provided that they are for non-obsolete
+programming languages or config formats (support will not be extended to cover individual shell commands).
+
+Other types of contributions are welcome as long as they do not go against the goal of keeping this library as lightweight as possible.
+
+## Installation
 ```sh
-$ go get github.com/rwinkhart/gohighlight-embedded
+$ go get github.com/rwinkhart/go-highlite
 ```
 
-Be sure to point your code to the correct path of `syntax_files`.
-
 ## Basic Usage
-
 Below is a simple example for highlighting a string (a Go snippet in this case).
 It uses `github.com/fatih/color` to actually colorize the output to the console.
 
-It must be built with `-tags=stxGo` to include the Go syntax layer.
+It must be built with `-tags=stxGo` or `-tags=stxAll` to include the Go syntax layer.
 
 ```go
 package main
@@ -33,8 +40,8 @@ import (
     "strings"
 
     "github.com/fatih/color"
-    "github.com/rwinkhart/gohighlight-embedded"
-    "github.com/rwinkhart/gohighlight-embedded/syntax"
+    "github.com/rwinkhart/go-highlite"
+    "github.com/rwinkhart/go-highlite/syntax"
 )
 
 func main() {

@@ -1,4 +1,4 @@
-module github.com/rwinkhart/gohighlight-embedded
+module github.com/rwinkhart/go-highlite
 
 go 1.24.4
 
