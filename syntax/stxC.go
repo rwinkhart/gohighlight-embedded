@@ -5,11 +5,6 @@ package syntax
 func init() {
 	syntaxMap["c"] = &lazySyntax{init: func() []byte {
 		return []byte(`filetype: c
-
-detect:
-    filename: "(\\.(c|C)$|\\.(h|H)$|\\.ii?$|\\.(def)$)"
-    header: "^[[:space:]]*#[[:space:]]*(define|pragma|include|(un|ifn?)def|endif|el(if|se)|if|warning|error)"
-
 rules:
     - identifier: "\\b[A-Z_][0-9A-Z_]+\\b"
     - statement: "([a-zA-Z][a-zA-Z0-9_]*)[[:space:]]*\\("

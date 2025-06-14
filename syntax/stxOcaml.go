@@ -5,10 +5,6 @@ package syntax
 func init() {
 	syntaxMap["ocaml"] = &lazySyntax{init: func() []byte {
 		return []byte(`filetype: ocaml
-
-detect:
-    filename: "\\.mli?$"
-
 rules:
     # Numbers
     ## Integers

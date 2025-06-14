@@ -5,10 +5,6 @@ package syntax
 func init() {
 	syntaxMap["swift"] = &lazySyntax{init: func() []byte {
 		return []byte(`filetype: swift
-
-detect:
-    filename: "\\.swift$"
-
 rules:
     # Operators
     - statement: "([.:;,+*|=!?\\%]|<|>|/|-|&)"

@@ -5,10 +5,6 @@ package syntax
 func init() {
 	syntaxMap["d"] = &lazySyntax{init: func() []byte {
 		return []byte(`filetype: d
-
-detect:
-    filename: "\\.(d(i|d)?)$"
-
 rules:
     # Operators and punctuation
     - statement: "(\\*|/|%|\\+|-|>>|<<|>>>|&|\\^(\\^)?|\\||~)?="

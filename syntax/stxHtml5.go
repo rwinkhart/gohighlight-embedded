@@ -5,11 +5,6 @@ package syntax
 func init() {
 	syntaxMap["html5"] = &lazySyntax{init: func() []byte {
 		return []byte(`filetype: html5
-
-detect:
-    filename: "\\.htm[l]?5$"
-    header: "<!DOCTYPE html5>"
-
 rules:
     - error: "<[^!].*?>"
     - symbol.tag: "(?i)<[/]?(a|a(bbr|ddress|rea|rticle|side|udio)|b|b(ase|d(i|o)|lockquote|r|utton)|ca(nvas|ption)|center|cite|co(de|l|lgroup)|d(ata|atalist|d|el|etails|fn|ialog|l|t)|em|embed|fieldset|fig(caption|ure)|form|iframe|h[1-6]|hr|i|img|in(put|s)|kbd|keygen|label|legend|li|link|ma(in|p|rk)|menu|menuitem|met(a|er)|nav|noscript|o(bject|l|pt(group|ion)|utput)|p|param|picture|pre|progress|q|r(p|t|uby)|s|samp|se(ction|lect)|small|source|span|strong|su(b|p|mmary)|textarea|time|track|u|ul|var|video|wbr)( .*)*?>"

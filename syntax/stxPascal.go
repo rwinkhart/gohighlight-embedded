@@ -5,10 +5,6 @@ package syntax
 func init() {
 	syntaxMap["pascal"] = &lazySyntax{init: func() []byte {
 		return []byte(`filetype: pascal
-
-detect:
-    filename: "\\.pas$"
-
 rules:
     - type: "\\b(?i:(string|ansistring|widestring|shortstring|char|ansichar|widechar|boolean|byte|shortint|word|smallint|longword|cardinal|longint|integer|int64|single|currency|double|extended))\\b"
     - statement: "\\b(?i:(and|asm|array|begin|break|case|const|constructor|continue|destructor|div|do|downto|else|end|file|for|function|goto|if|implementation|in|inline|interface|label|mod|not|object|of|on|operator|or|packed|procedure|program|record|repeat|resourcestring|set|shl|shr|then|to|type|unit|until|uses|var|while|with|xor))\\b"

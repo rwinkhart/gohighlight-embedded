@@ -5,10 +5,6 @@ package syntax
 func init() {
 	syntaxMap["scala"] = &lazySyntax{init: func() []byte {
 		return []byte(`filetype: scala
-
-detect:
-    filename: "\\.scala$"
-
 rules:
     - type: "\\b(boolean|byte|char|double|float|int|long|new|short|this|transient|void)\\b"
     - statement: "\\b(match|val|var|break|case|catch|continue|default|do|else|finally|for|if|return|switch|throw|try|while)\\b"

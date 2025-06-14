@@ -5,10 +5,6 @@ package syntax
 func init() {
 	syntaxMap["toml"] = &lazySyntax{init: func() []byte {
 		return []byte(`filetype: toml
-
-detect:
-    filename: "\\.toml"
-
 rules:
     - statement: "(.*)[[:space:]]="
     - special: "="

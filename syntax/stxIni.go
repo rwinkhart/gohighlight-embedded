@@ -5,11 +5,6 @@ package syntax
 func init() {
 	syntaxMap["ini"] = &lazySyntax{init: func() []byte {
 		return []byte(`filetype: ini
-
-detect:
-    filename: "\\.(ini|desktop|lfl|override)$|(mimeapps\\.list|pinforc|setup\\.cfg)$|weechat/.+\\.conf$"
-    header: "^\\[[A-Za-z]+\\]$"
-
 rules:
     - constant.bool.true: "\\btrue\\b"
     - constant.bool.false: "\\bfalse\\b"

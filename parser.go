@@ -26,12 +26,10 @@ func (g Group) String() string {
 }
 
 // A Def is a full syntax definition for a language
-// It has a filetype, information about how to detect the filetype based
-// on filename or header (the first line of the file)
-// Then it has the rules which define how to highlight the file
+// It has a filetype and the rules which define how
+// to highlight the file
 type Def struct {
 	FileType string
-	ftdetect []*regexp.Regexp
 	rules    *rules
 }
 
@@ -91,24 +89,6 @@ func ParseDef(input []byte) (s *Def, err error) {
 		case "filetype":
 			filetype := v.(string)
 			s.FileType = filetype
-		case "detect":
-			ftdetect := v.(map[any]any)
-			if len(ftdetect) >= 1 {
-				syntax, err := regexp.Compile(ftdetect["filename"].(string))
-				if err != nil {
-					return nil, err
-				}
-
-				s.ftdetect = append(s.ftdetect, syntax)
-			}
-			if len(ftdetect) >= 2 {
-				header, err := regexp.Compile(ftdetect["header"].(string))
-				if err != nil {
-					return nil, err
-				}
-
-				s.ftdetect = append(s.ftdetect, header)
-			}
 		case "rules":
 			inputRules := v.([]any)
 

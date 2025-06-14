@@ -5,11 +5,6 @@ package syntax
 func init() {
 	syntaxMap["python3"] = &lazySyntax{init: func() []byte {
 		return []byte(`filename: python3
-
-detect:
-    filename: "\\.py3$"
-    header: "^#!.*/(env +)?python3$"
-
 rules:
     # built-in objects
     - constant: "\\b(None|self|True|False)\\b"

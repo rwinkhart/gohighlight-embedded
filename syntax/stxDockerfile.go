@@ -5,10 +5,6 @@ package syntax
 func init() {
 	syntaxMap["dockerfile"] = &lazySyntax{init: func() []byte {
 		return []byte(`filetype: dockerfile
-
-detect:
-    filename: "(Dockerfile[^/]*$|\\.dockerfile$)"
-
 rules:
     ## Keywords
     - keyword: "(?i)^(FROM|MAINTAINER|RUN|CMD|LABEL|EXPOSE|ENV|ADD|COPY|ENTRYPOINT|VOLUME|USER|WORKDIR|ONBUILD|ARG|HEALTHCHECK|STOPSIGNAL|SHELL)[[:space:]]"

@@ -5,11 +5,6 @@ package syntax
 func init() {
 	syntaxMap["bash"] = &lazySyntax{init: func() []byte {
 		return []byte(`filetype: shell
-
-detect:
-    filename: "(\\.sh$|\\.bash|\\.bashrc|bashrc|\\.bash_aliases|bash_aliases|\\.bash_functions|bash_functions|\\.bash_profile|bash_profile|Pkgfile|pkgmk.conf|profile|rc.conf|PKGBUILD|.ebuild\\$|APKBUILD)"
-    header: "^#!.*/(env +)?(ba)?sh( |$)"
-
 rules:
     # Numbers
     - constant.number: "\\b[0-9]+\\b"

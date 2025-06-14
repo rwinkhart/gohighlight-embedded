@@ -5,10 +5,6 @@ package syntax
 func init() {
 	syntaxMap["css"] = &lazySyntax{init: func() []byte {
 		return []byte(`filetype: css
-
-detect:
-    filename: "\\.(css|scss)$"
-
 rules:
     # Classes and IDs
     - statement: "(?i)."

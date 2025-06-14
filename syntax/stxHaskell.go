@@ -5,10 +5,6 @@ package syntax
 func init() {
 	syntaxMap["haskell"] = &lazySyntax{init: func() []byte {
 		return []byte(`filetype: haskell
-
-detect:
-    filename: "\\.hs$"
-
 rules:
     # Keywords
     - statement: "[ ](as|case|of|class|data|default|deriving|do|forall|foreign|hiding|if|then|else|import|infix|infixl|infixr|instance|let|in|mdo|module|newtype|qualified|type|where)[ ]"

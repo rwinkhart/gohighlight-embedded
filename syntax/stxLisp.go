@@ -5,10 +5,6 @@ package syntax
 func init() {
 	syntaxMap["lisp"] = &lazySyntax{init: func() []byte {
 		return []byte(`filetype: lisp
-
-detect:
-    filename: "(emacs|zile)$|\\.(el|li?sp|scm|ss)$"
-
 rules:
     - default: "\\([a-z-]+"
     - symbol: "\\(([\\-+*/<>]|<=|>=)|'"

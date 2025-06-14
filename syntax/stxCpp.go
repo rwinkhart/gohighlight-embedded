@@ -5,10 +5,6 @@ package syntax
 func init() {
 	syntaxMap["cpp"] = &lazySyntax{init: func() []byte {
 		return []byte(`filetype: c++
-
-detect:
-    filename: "(\\.c(c|pp|xx)$|\\.h(h|pp|xx)$|\\.ii?$|\\.(def)$)"
-
 rules:
 
     - identifier: "\\b[A-Z_][0-9A-Z_]+\\b"

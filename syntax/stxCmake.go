@@ -5,10 +5,6 @@ package syntax
 func init() {
 	syntaxMap["cmake"] = &lazySyntax{init: func() []byte {
 		return []byte(`filetype: cmake
-
-detect:
-    filename: "(CMakeLists\\.txt|\\.cmake)$"
-
 rules:
     - identifier.var: "^[[:space:]]*[A-Z0-9_]+"
     - preproc: "^[[:space:]]*(include|include_directories|include_external_msproject)\\b"

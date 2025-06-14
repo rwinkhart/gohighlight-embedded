@@ -5,10 +5,6 @@ package syntax
 func init() {
 	syntaxMap["csharp"] = &lazySyntax{init: func() []byte {
 		return []byte(`filetype: csharp
-
-detect:
-    filename: "\\.cs$"
-
 rules:
     # Class
     - identifier.class: "class +[A-Za-z0-9]+ *((:) +[A-Za-z0-9.]+)?"

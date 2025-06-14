@@ -5,10 +5,6 @@ package syntax
 func init() {
 	syntaxMap["objc"] = &lazySyntax{init: func() []byte {
 		return []byte(`filetype: objective-c
-
-detect:
-    filename: "\\.(m|mm|h)$"
-
 rules:
     - type: "\\b(float|double|CGFloat|id|bool|BOOL|Boolean|char|int|short|long|sizeof|enum|void|static|const|struct|union|typedef|extern|(un)?signed|inline|Class|SEL|IMP|NS(U)?Integer)\\b"
     - type: "\\b((s?size)|((u_?)?int(8|16|32|64|ptr)))_t\\b"

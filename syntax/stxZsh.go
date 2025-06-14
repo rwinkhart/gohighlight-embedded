@@ -5,11 +5,6 @@ package syntax
 func init() {
 	syntaxMap["zsh"] = &lazySyntax{init: func() []byte {
 		return []byte(`filetype: zsh
-
-detect:
-    filename: "(\\.zsh$|\\.?(zshenv|zprofile|zshrc|zlogin|zlogout)$)"
-    header: "^#!.*/(env +)?zsh( |$)"
-
 rules:
     ## Numbers
     - constant.number: "\\b[0-9]+\\b"

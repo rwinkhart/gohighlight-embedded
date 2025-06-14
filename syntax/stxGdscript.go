@@ -5,10 +5,6 @@ package syntax
 func init() {
 	syntaxMap["gdscript"] = &lazySyntax{init: func() []byte {
 		return []byte(`filetype: gdscript
-
-detect:
-    filename: "\\.gd$"
-
 rules:
     # built-in objects
     - constant: "\\b(null|self|true|false)\\b"

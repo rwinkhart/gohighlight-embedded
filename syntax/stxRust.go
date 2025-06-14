@@ -5,10 +5,6 @@ package syntax
 func init() {
 	syntaxMap["rust"] = &lazySyntax{init: func() []byte {
 		return []byte(`filetype: rust
-
-detect:
-    filename: "\\.rs$"
-
 rules:
     # function definition
     - identifier: "fn [a-z0-9_]+"

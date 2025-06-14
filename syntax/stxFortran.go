@@ -5,10 +5,6 @@ package syntax
 func init() {
 	syntaxMap["fortran"] = &lazySyntax{init: func() []byte {
 		return []byte(`filetype: fortran
-
-detect:
-    filename: "\\.([Ff]|[Ff]90|[Ff]95|[Ff][Oo][Rr])$"
-
 rules:
     - type:  "(?i)\\b(action|advance|all|allocatable|allocated|any|apostrophe)\\b"
     - type:  "(?i)\\b(append|asis|assign|assignment|associated|character|common)\\b"

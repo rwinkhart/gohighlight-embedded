@@ -5,10 +5,6 @@ package syntax
 func init() {
 	syntaxMap["dart"] = &lazySyntax{init: func() []byte {
 		return []byte(`filetype: dart
-
-detect:
-    filename: "\\.dart$"
-
 rules:
     - constant.number: "\\b[-+]?([1-9][0-9]*|0[0-7]*|0x[0-9a-fA-F]+)([uU][lL]?|[lL][uU]?)?\\b"
     - constant.number: "\\b[-+]?([0-9]+\\.[0-9]*|[0-9]*\\.[0-9]+)([EePp][+-]?[0-9]+)?[fFlL]?"

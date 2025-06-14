@@ -5,10 +5,6 @@ package syntax
 func init() {
 	syntaxMap["caddyfile"] = &lazySyntax{init: func() []byte {
 		return []byte(`filetype: caddyfile
-
-detect:
-    filename: "Caddyfile"
-
 rules:
     - identifier: "^\\s*\\S+(\\s|$)"
     - type: "^([\\w.:/-]+,? ?)+[,{]$"

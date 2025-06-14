@@ -5,11 +5,6 @@ package syntax
 func init() {
 	syntaxMap["fish"] = &lazySyntax{init: func() []byte {
 		return []byte(`filetype: fish
-
-detect:
-    filename: "\\.fish$"
-    header: "^#!.*/(env +)?fish( |$)"
-
 rules:
       # Numbers
     - constant: "\\b[0-9]+\\b"

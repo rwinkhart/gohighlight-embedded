@@ -5,11 +5,6 @@ package syntax
 func init() {
 	syntaxMap["go"] = &lazySyntax{init: func() []byte {
 		return []byte(`filetype: go
-
-detect:
-    filename: "\\.go$"
-    header: "(^package\\s.*)"
-
 rules:
     # Conditionals and control flow
     - special: "\\b(break|case|continue|default|go|goto|range|return)\\b"

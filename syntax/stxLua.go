@@ -5,10 +5,6 @@ package syntax
 func init() {
 	syntaxMap["lua"] = &lazySyntax{init: func() []byte {
 		return []byte(`filetype: lua
-
-detect:
-    filename: "\\.lua$"
-
 rules:
     - statement: "\\b(do|end|while|repeat|until|if|elseif|then|else|for|in|function|local|return)\\b"
     - statement: "\\b(not|and|or)\\b"

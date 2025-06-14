@@ -5,10 +5,6 @@ package syntax
 func init() {
 	syntaxMap["java"] = &lazySyntax{init: func() []byte {
 		return []byte(`filetype: java
-
-detect:
-    filename: "\\.java$"
-
 rules:
     - type: "\\b(boolean|byte|char|double|float|int|long|new|short|this|transient|void)\\b"
     - statement: "\\b(break|case|catch|continue|default|do|else|finally|for|if|return|switch|throw|try|while)\\b"

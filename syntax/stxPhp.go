@@ -5,11 +5,6 @@ package syntax
 func init() {
 	syntaxMap["php"] = &lazySyntax{init: func() []byte {
 		return []byte(`filetype: php
-
-detect:
-    filename: "\\.php[2345s~]|\\.inc[2345s~]$"
-    header: "^(<\\?php)"
-
 rules:
     - symbol.operator: "<|>"
     - error: "<[^!].*?>"

@@ -5,11 +5,6 @@ package syntax
 func init() {
 	syntaxMap["yaml"] = &lazySyntax{init: func() []byte {
 		return []byte(`filetype: yaml
-
-detect:
-    filename: "\\.ya?ml$"
-    header: "%YAML"
-
 rules:
     - type: "(^| )!!(binary|bool|float|int|map|null|omap|seq|set|str) "
     - constant:  "\\b(YES|yes|Y|y|ON|on|NO|no|N|n|OFF|off)\\b"

@@ -5,10 +5,6 @@ package syntax
 func init() {
 	syntaxMap["ino"] = &lazySyntax{init: func() []byte {
 		return []byte(`filetype: ino
-
-detect:
-    filename: "\\.?ino$"
-
 rules:
     - identifier: "\\b[A-Z_][0-9A-Z_]+\\b"
 

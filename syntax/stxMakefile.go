@@ -5,11 +5,6 @@ package syntax
 func init() {
 	syntaxMap["makefile"] = &lazySyntax{init: func() []byte {
 		return []byte(`filetype: makefile
-
-detect:
-    filename: "([Mm]akefile|\\.ma?k)$"
-    header: "^#!.*/(env +)?[bg]?make( |$)"
-
 rules:
     - preproc: "(ifeq|ifdef|ifneq|ifndef|else|endif)"
     - statement: "^(export|include|override)\\>"

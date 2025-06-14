@@ -5,10 +5,6 @@ package syntax
 func init() {
 	syntaxMap["asm"] = &lazySyntax{init: func() []byte {
 		return []byte(`filetype: asm
-
-detect:
-    filename: "\\.(S|s|asm)$"
-
 rules:
     # This file is made for NASM assembly
 

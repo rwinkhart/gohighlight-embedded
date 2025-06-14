@@ -5,11 +5,6 @@ package syntax
 func init() {
 	syntaxMap["xml"] = &lazySyntax{init: func() []byte {
 		return []byte(`filetype: xml
-
-detect:
-    filename: "\\.(xml|sgml?|rng|plist)$"
-    header: "(<rss|<!DOCTYPE|<xsd|<\\?xml)"
-
 rules:
     - type: "(<(/)?[a-zA-Z:]+>)"
     - type: "(<(/)?[a-zA-Z:]+[[:space:]]+)"

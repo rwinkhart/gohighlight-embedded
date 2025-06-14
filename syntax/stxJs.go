@@ -5,11 +5,6 @@ package syntax
 func init() {
 	syntaxMap["js"] = &lazySyntax{init: func() []byte {
 		return []byte(`filetype: javascript
-
-detect:
-    filename: "\\.js$"
-    header: "^(import|require|const|<script\\s+src=(\"|').*js(\"|'))"
-
 rules:
     - type: "(<(/)?[a-zA-Z:]+>)"
     - type: "(<(/)?[a-zA-Z:]+[[:space:]]+)"
