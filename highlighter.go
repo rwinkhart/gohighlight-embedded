@@ -1,7 +1,7 @@
 package highlight
 
 import (
-	"io/ioutil"
+	"os"
 	"path/filepath"
 	"regexp"
 	"strings"
@@ -18,19 +18,6 @@ func runePos(p int, str string) int {
 		return utf8.RuneCountInString(str)
 	}
 	return utf8.RuneCountInString(str[:p])
-}
-
-func combineLineMatch(src, dst LineMatch) LineMatch {
-	for k, v := range src {
-		if g, ok := dst[k]; ok {
-			if g == 0 {
-				dst[k] = v
-			}
-		} else {
-			dst[k] = v
-		}
-	}
-	return dst
 }
 
 // A State represents the region at the end of a line
@@ -72,7 +59,7 @@ func ParseSyntaxFiles(dir string, defs *[]*Def) ([]string, error) {
 	}
 
 	for _, filePath := range files {
-		file, err := ioutil.ReadFile(filePath)
+		file, err := os.ReadFile(filePath)
 		if err != nil {
 			warnings = append(warnings, filePath+": "+err.Error())
 		} else if len(file) > 0 {

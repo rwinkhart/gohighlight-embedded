@@ -197,7 +197,7 @@ func parseRules(input []interface{}, curRegion *region) (*rules, error) {
 				}
 				rules.regions = append(rules.regions, region)
 			default:
-				return nil, fmt.Errorf("Bad type %T", object)
+				return nil, fmt.Errorf("bad type %T", object)
 			}
 		}
 	}

@@ -1,5 +1,3 @@
-//go:build stxGo
-
 package syntax
 
 func init() {
