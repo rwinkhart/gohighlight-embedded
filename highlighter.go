@@ -185,7 +185,7 @@ func (h *Highlighter) highlightRegion(highlights LineMatch, start int, canMatchE
 	}
 
 	fullHighlights := make([]Group, len([]rune(string(line))))
-	for i := 0; i < len(fullHighlights); i++ {
+	for i := range fullHighlights {
 		fullHighlights[i] = curRegion.group
 	}
 
@@ -284,7 +284,7 @@ func (h *Highlighter) HighlightString(input string) []LineMatch {
 	lines := strings.Split(input, "\n")
 	var lineMatches []LineMatch
 
-	for i := 0; i < len(lines); i++ {
+	for i := range lines {
 		line := []rune(lines[i])
 		highlights := make(LineMatch)
 
@@ -300,7 +300,7 @@ func (h *Highlighter) HighlightString(input string) []LineMatch {
 
 // HighlightStates correctly sets all states for the buffer
 func (h *Highlighter) HighlightStates(input LineStates) {
-	for i := 0; i < input.LinesNum(); i++ {
+	for i := range input.LinesNum() {
 		line := []rune(input.Line(i))
 		// highlights := make(LineMatch)
 
