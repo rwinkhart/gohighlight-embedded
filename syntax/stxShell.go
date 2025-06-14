@@ -1,9 +1,9 @@
-//go:build stxBash || stxAll
+//go:build stxShell || stxAll
 
 package syntax
 
 func init() {
-	syntaxMap["bash"] = &lazySyntax{init: func() []byte {
+	syntaxMap["shell"] = &lazySyntax{init: func() []byte {
 		return []byte(`filetype: shell
 rules:
     - constant.number: "\\b[0-9]+\\b"
