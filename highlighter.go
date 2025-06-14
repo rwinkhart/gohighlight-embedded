@@ -1,4 +1,4 @@
-package highlight
+package highlite
 
 import (
 	"os"

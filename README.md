@@ -56,14 +56,14 @@ func helloWorld() {
 }`
 
     // Load and parse the go syntax layer into a `*highlight.Def`
-    syntaxDef, err := highlight.ParseDef(syntax.Get("go"))
+    syntaxDef, err := highlite.ParseDef(syntax.Get("go"))
     if err != nil {
         fmt.Println(err)
         return
     }
 
     // Make a new highlighter from the definition
-    h := highlight.NewHighlighter(syntaxDef)
+    h := highlite.NewHighlighter(syntaxDef)
 
     // Highlight the string
     // Matches is an array of maps which point to groups
@@ -79,46 +79,46 @@ func helloWorld() {
 	    for _, c := range l {
 		    if group, ok := matches[lineN][colN]; ok {
 			    switch group {
-			    case highlight.Groups["statement"]:
+			    case highlite.Groups["statement"]:
 				    fallthrough
-			    case highlight.Groups["green"]:
+			    case highlite.Groups["green"]:
 				    color.Set(color.FgGreen)
 
-			    case highlight.Groups["identifier"]:
+			    case highlite.Groups["identifier"]:
 				    fallthrough
-			    case highlight.Groups["blue"]:
+			    case highlite.Groups["blue"]:
 				    color.Set(color.FgHiBlue)
 
-			    case highlight.Groups["preproc"]:
+			    case highlite.Groups["preproc"]:
 				    color.Set(color.FgHiRed)
 
-			    case highlight.Groups["special"]:
+			    case highlite.Groups["special"]:
 				    fallthrough
-			    case highlight.Groups["red"]:
+			    case highlite.Groups["red"]:
 				    color.Set(color.FgRed)
 
-			    case highlight.Groups["constant.string"]:
+			    case highlite.Groups["constant.string"]:
 				    fallthrough
-			    case highlight.Groups["constant"]:
+			    case highlite.Groups["constant"]:
 				    fallthrough
-			    case highlight.Groups["constant.number"]:
+			    case highlite.Groups["constant.number"]:
 				    fallthrough
-			    case highlight.Groups["cyan"]:
+			    case highlite.Groups["cyan"]:
 				    color.Set(color.FgCyan)
 
-			    case highlight.Groups["constant.specialChar"]:
+			    case highlite.Groups["constant.specialChar"]:
 				    fallthrough
-			    case highlight.Groups["magenta"]:
+			    case highlite.Groups["magenta"]:
 				    color.Set(color.FgHiMagenta)
 
-			    case highlight.Groups["type"]:
+			    case highlite.Groups["type"]:
 				    fallthrough
-			    case highlight.Groups["yellow"]:
+			    case highlite.Groups["yellow"]:
 				    color.Set(color.FgYellow)
 
-			    case highlight.Groups["comment"]:
+			    case highlite.Groups["comment"]:
 				    fallthrough
-			    case highlight.Groups["high.green"]:
+			    case highlite.Groups["high.green"]:
 				    color.Set(color.FgHiGreen)
 			    default:
 				    color.Unset()
@@ -128,7 +128,7 @@ func helloWorld() {
 		    colN++
 	    }
 	    if group, ok := matches[lineN][colN]; ok {
-		    if group == highlight.Groups["default"] || group == highlight.Groups[""] {
+		    if group == highlite.Groups["default"] || group == highlite.Groups[""] {
 			    color.Unset()
 		    }
 	    }
