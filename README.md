@@ -27,26 +27,26 @@ $ go get github.com/rwinkhart/go-highlite
 ```
 
 ## Basic Usage
-Below is a simple example for highlighting a string (a Go snippet in this case).
-It uses `github.com/fatih/color` to actually colorize the output to the console.
+Below is a simple example for highlighting a Go snippet with ANSI colors.
 
 It must be built with `-tags=stxGo` or `-tags=stxAll` to include the Go syntax layer.
+
+For a more advanced example on manually colorizing the output or colorizing it in a
+different, non-ANSI format, see the `ansi.Colorize` function.
 
 ```go
 package main
 
 import (
-    "fmt"
-    "strings"
+	"fmt"
+	"os"
 
-    "github.com/fatih/color"
-    "github.com/rwinkhart/go-highlite"
-    "github.com/rwinkhart/go-highlite/syntax"
+	"github.com/rwinkhart/go-highlite/ansi"
 )
 
 func main() {
-    // Here is the go code we will highlight
-    inputString := `package main
+	// Here is the go code we will highlight
+	inputString := `package main
 
 import "fmt"
 
@@ -55,86 +55,12 @@ func helloWorld() {
     fmt.Println("Hello world")
 }`
 
-    // Load and parse the go syntax layer into a `*highlight.Def`
-    syntaxDef, err := highlite.ParseDef(syntax.Get("go"))
-    if err != nil {
-        fmt.Println(err)
-        return
-    }
-
-    // Make a new highlighter from the definition
-    h := highlite.NewHighlighter(syntaxDef)
-
-    // Highlight the string
-    // Matches is an array of maps which point to groups
-    // matches[lineNum][colNum] will give you the change in group at that line and column number
-    // Note that there is only a group at a line and column number if the syntax highlighting changed at that position
-    matches := h.HighlightString(inputString)
-
-    // We split the string into a bunch of lines
-    // Now we will print the string
-    lines := strings.Split(inputString, "\n")
-    for lineN, l := range lines {
-	    colN := 0
-	    for _, c := range l {
-		    if group, ok := matches[lineN][colN]; ok {
-			    switch group {
-			    case highlite.Groups["statement"]:
-				    fallthrough
-			    case highlite.Groups["green"]:
-				    color.Set(color.FgGreen)
-
-			    case highlite.Groups["identifier"]:
-				    fallthrough
-			    case highlite.Groups["blue"]:
-				    color.Set(color.FgHiBlue)
-
-			    case highlite.Groups["preproc"]:
-				    color.Set(color.FgHiRed)
-
-			    case highlite.Groups["special"]:
-				    fallthrough
-			    case highlite.Groups["red"]:
-				    color.Set(color.FgRed)
-
-			    case highlite.Groups["constant.string"]:
-				    fallthrough
-			    case highlite.Groups["constant"]:
-				    fallthrough
-			    case highlite.Groups["constant.number"]:
-				    fallthrough
-			    case highlite.Groups["cyan"]:
-				    color.Set(color.FgCyan)
-
-			    case highlite.Groups["constant.specialChar"]:
-				    fallthrough
-			    case highlite.Groups["magenta"]:
-				    color.Set(color.FgHiMagenta)
-
-			    case highlite.Groups["type"]:
-				    fallthrough
-			    case highlite.Groups["yellow"]:
-				    color.Set(color.FgYellow)
-
-			    case highlite.Groups["comment"]:
-				    fallthrough
-			    case highlite.Groups["high.green"]:
-				    color.Set(color.FgHiGreen)
-			    default:
-				    color.Unset()
-			    }
-		    }
-		    fmt.Print(string(c))
-		    colN++
-	    }
-	    if group, ok := matches[lineN][colN]; ok {
-		    if group == highlite.Groups["default"] || group == highlite.Groups[""] {
-			    color.Unset()
-		    }
-	    }
-
-	    color.Unset()
-	    fmt.Print("\n")
-    }
+	result, err := ansi.Colorize(inputString, "go")
+	if err != nil {
+		fmt.Println("Failed to colorize input: " + err.Error())
+		os.Exit(1)
+	}
+	fmt.Println(result)
 }
+
 ```
