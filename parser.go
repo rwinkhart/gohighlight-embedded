@@ -79,7 +79,7 @@ func ParseDef(input []byte) (s *Def, err error) {
 		}
 	}()
 
-	var rules map[interface{}]interface{}
+	var rules map[any]any
 	if err = yaml.Unmarshal(input, &rules); err != nil {
 		return nil, err
 	}
@@ -92,7 +92,7 @@ func ParseDef(input []byte) (s *Def, err error) {
 			filetype := v.(string)
 			s.FileType = filetype
 		case "detect":
-			ftdetect := v.(map[interface{}]interface{})
+			ftdetect := v.(map[any]any)
 			if len(ftdetect) >= 1 {
 				syntax, err := regexp.Compile(ftdetect["filename"].(string))
 				if err != nil {
@@ -110,7 +110,7 @@ func ParseDef(input []byte) (s *Def, err error) {
 				s.ftdetect = append(s.ftdetect, header)
 			}
 		case "rules":
-			inputRules := v.([]interface{})
+			inputRules := v.([]any)
 
 			rules, err := parseRules(inputRules, nil)
 			if err != nil {
@@ -162,11 +162,11 @@ func resolveIncludesInRegion(defs []*Def, region *region) {
 	}
 }
 
-func parseRules(input []interface{}, curRegion *region) (*rules, error) {
+func parseRules(input []any, curRegion *region) (*rules, error) {
 	rules := new(rules)
 
 	for _, v := range input {
-		rule := v.(map[interface{}]interface{})
+		rule := v.(map[any]any)
 		for k, val := range rule {
 			group := k
 
@@ -189,7 +189,7 @@ func parseRules(input []interface{}, curRegion *region) (*rules, error) {
 					groupNum := Groups[groupStr]
 					rules.patterns = append(rules.patterns, &pattern{groupNum, r})
 				}
-			case map[interface{}]interface{}:
+			case map[any]any:
 				// region
 				region, err := parseRegion(group.(string), object, curRegion)
 				if err != nil {
@@ -205,7 +205,7 @@ func parseRules(input []interface{}, curRegion *region) (*rules, error) {
 	return rules, nil
 }
 
-func parseRegion(group string, regionInfo map[interface{}]interface{}, prevRegion *region) (*region, error) {
+func parseRegion(group string, regionInfo map[any]any, prevRegion *region) (*region, error) {
 	var err error
 
 	region := new(region)
@@ -255,7 +255,7 @@ func parseRegion(group string, regionInfo map[interface{}]interface{}, prevRegio
 		region.limitGroup = region.group
 	}
 
-	region.rules, err = parseRules(regionInfo["rules"].([]interface{}), region)
+	region.rules, err = parseRules(regionInfo["rules"].([]any), region)
 
 	if err != nil {
 		return nil, err
