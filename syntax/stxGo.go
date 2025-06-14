@@ -1,7 +1,10 @@
+//go:build stxGo
+
 package syntax
 
-func GetGo() []byte {
-	return []byte(`filetype: go
+func init() {
+	syntaxMap["go"] = &lazySyntax{init: func() []byte {
+		return []byte(`filetype: go
 
 detect:
     filename: "\\.go$"
@@ -67,4 +70,5 @@ rules:
         rules:
             - todo: "(TODO|XXX|FIXME):?"
 `)
+	}}
 }

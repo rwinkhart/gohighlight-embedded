@@ -23,6 +23,8 @@ Be sure to point your code to the correct path of `syntax_files`.
 Below is a simple example for highlighting a string (a Go snippet in this case).
 It uses `github.com/fatih/color` to actually colorize the output to the console.
 
+It must be built with `-tags=stxGo` to include the Go syntax layer.
+
 ```go
 package main
 
@@ -46,12 +48,8 @@ func helloWorld() {
     fmt.Println("Hello world")
 }`
 
-    // Load the go syntax file
-    // Make sure that the syntax_files directory is in the current directory
-    syntaxFile := syntax.GetGo()
-
-    // Parse it into a `*highlight.Def`
-    syntaxDef, err := highlight.ParseDef(syntaxFile)
+    // Load and parse the go syntax layer into a `*highlight.Def`
+    syntaxDef, err := highlight.ParseDef(syntax.Get("go"))
     if err != nil {
         fmt.Println(err)
         return
@@ -59,6 +57,7 @@ func helloWorld() {
 
     // Make a new highlighter from the definition
     h := highlight.NewHighlighter(syntaxDef)
+
     // Highlight the string
     // Matches is an array of maps which point to groups
     // matches[lineNum][colNum] will give you the change in group at that line and column number
@@ -84,8 +83,6 @@ func helloWorld() {
 				    color.Set(color.FgHiBlue)
 
 			    case highlight.Groups["preproc"]:
-				    //fallthrough
-				    //case highlight.Groups["high.red"]:
 				    color.Set(color.FgHiRed)
 
 			    case highlight.Groups["special"]:
