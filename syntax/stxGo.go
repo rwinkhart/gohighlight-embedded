@@ -1,3 +1,5 @@
+//go:build stxGo || stxAll
+
 package syntax
 
 func init() {
