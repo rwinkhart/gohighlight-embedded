@@ -68,7 +68,6 @@ rules:
         start: "/\\*"
         end: "\\*/"
         rules:
-            - todo: "(TODO|XXX|FIXME):?"
-`)
+            - todo: "(TODO|XXX|FIXME):?"`)
 	}}
 }
