@@ -19,22 +19,18 @@ rules:
     - constant: "'([^'\\\\]|(\\\\[\"'abfnrtv\\\\]))'"
     - constant: "'\\\\(([0-3]?[0-7]{1,2}))'"
     - constant: "'\\\\x[0-9A-Fa-f]{1,2}'"
-      # GCC builtins
     - statement: "__attribute__[[:space:]]*\\(\\([^)]*\\)\\)"
     - statement: "__(aligned|asm|builtin|hidden|inline|packed|restrict|section|typeof|weak)__"
-      # Operator Color
     - symbol.operator: "([.:;,+*|=!\\%]|<|>|/|-|&)"
     - symbol.brackets: "[(){}]|\\[|\\]"
     - constant.number: "(\\b[0-9]+\\b|\\b0x[0-9A-Fa-f]+\\b)"
     - constant.number: "NULL"
-
     - constant.string:
         start: "\""
         end: "\""
         skip: "\\\\."
         rules:
             - constant.specialChar: "\\\\."
-
     - constant.string:
         start: "'"
         end: "'"
@@ -42,13 +38,11 @@ rules:
         rules:
             - preproc: "..+"
             - constant.specialChar: "\\\\."
-
     - comment:
         start: "//"
         end: "$"
         rules:
             - todo: "(TODO|XXX|FIXME):?"
-
     - comment:
         start: "/\\*"
         end: "\\*/"

@@ -23,7 +23,6 @@ rules:
         skip: "\\\\."
         rules:
             - constant.specialChar: "\\\\."
-
     - statement: "\\\"(\\\\\"|[^\"])*\\\"[[:space:]]*:\"  \"'(\\'|[^'])*'[[:space:]]*:"
     - constant: "\\\\u[0-9a-fA-F]{4}|\\\\[bfnrt'\"/\\\\]"`)
 	}}

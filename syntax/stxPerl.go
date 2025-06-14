@@ -12,14 +12,12 @@ rules:
         start: "[$@%]"
         end: "((?i) |[^0-9A-Z_]|-)"
         rules: []
-
     - constant.string: "\".*\"|qq\\|.*\\|"
     - default: "[sm]/.*/"
     - preproc:
         start: "(^use| = new)"
         end: ";"
         rules: []
-
     - comment: "#.*"
     - identifier.macro:
         start: "<< 'STOP'"

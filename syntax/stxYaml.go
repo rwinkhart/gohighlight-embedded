@@ -14,21 +14,18 @@ rules:
     - type: "[-.\\w]+:"
     - statement: ":"
     - special:  "(^---|^\\.\\.\\.|^%YAML|^%TAG)"
-
     - constant.string:
         start: "\""
         end: "\""
         skip: "\\\\."
         rules:
             - constant.specialChar: "\\\\."
-
     - constant.string:
         start: "'"
         end: "'"
         skip: "\\\\."
         rules:
             - constant.specialChar: "\\\\."
-
     - comment:
         start: "#"
         end: "$"

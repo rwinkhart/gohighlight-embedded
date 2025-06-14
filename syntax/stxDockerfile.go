@@ -6,29 +6,20 @@ func init() {
 	syntaxMap["dockerfile"] = &lazySyntax{init: func() []byte {
 		return []byte(`filetype: dockerfile
 rules:
-    ## Keywords
     - keyword: "(?i)^(FROM|MAINTAINER|RUN|CMD|LABEL|EXPOSE|ENV|ADD|COPY|ENTRYPOINT|VOLUME|USER|WORKDIR|ONBUILD|ARG|HEALTHCHECK|STOPSIGNAL|SHELL)[[:space:]]"
-
-      ## Brackets & parenthesis
     - statement: "(\\(|\\)|\\[|\\])"
-
-      ## Double ampersand
     - special: "&&"
-
-      ## Comments
     - comment:
         start: "#"
         end: "$"
         rules:
             - todo: "(TODO|XXX|FIXME):?"
-
     - constant.string:
         start: "\""
         end: "\""
         skip: "\\\\."
         rules:
             - constant.specialChar: "\\\\."
-
     - constant.string:
         start: "'"
         end: "'"

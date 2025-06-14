@@ -26,7 +26,6 @@ rules:
         start: "<<-?'?EOT'?"
         end: "^EOT"
         rules: []
-
     - todo: "(XXX|TODO|FIXME|\\?\\?\\?)"
     - preproc.shebang: "^#!.+?( |$)"`)
 	}}

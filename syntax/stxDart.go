@@ -19,26 +19,22 @@ rules:
     - statement: "[-+/*=<>!~%?:&|]"
     - constant: "/[^*]([^/]|(\\\\/))*[^\\\\]/[gim]*"
     - constant: "\\\\[0-7][0-7]?[0-7]?|\\\\x[0-9a-fA-F]+|\\\\[bfnrt'\"\\?\\\\]"
-
     - comment:
         start: "//"
         end: "$"
         rules:
             - todo: "TODO:?"
-
     - comment:
         start: "/\\*"
         end: "\\*/"
         rules:
             - todo: "TODO:?"
-
     - constant.string:
         start: "\""
         end: "\""
         skip: "\\\\."
         rules:
             - constant.specialChar: "\\\\."
-
     - constant.string:
         start: "'"
         end: "'"

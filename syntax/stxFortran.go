@@ -15,7 +15,6 @@ rules:
     - type:  "(?i)\\b(operator|optional|pack|parameter|pointer|position|private)\\b"
     - type:  "(?i)\\b(program|public|real|recl|recursive|selected_int_kind)\\b"
     - type:  "(?i)\\b(selected_real_kind|subroutine|status)\\b"
-
     - constant:  "(?i)\\b(abs|achar|adjustl|adjustr|allocate|bit_size|call|char)\\b"
     - constant:  "(?i)\\b(close|contains|count|cpu_time|cshift|date_and_time)\\b"
     - constant:  "(?i)\\b(deallocate|digits|dot_product|eor|eoshift|function|iachar)\\b"
@@ -27,36 +26,25 @@ rules:
     - constant:  "(?i)\\b(reshape|rewind|save|scan|sequence|shape|sign|size|spacing)\\b"
     - constant:  "(?i)\\b(spread|sum|system_clock|target|transfer|transpose|trim)\\b"
     - constant:  "(?i)\\b(ubound|unpack|verify|write|tiny|type|use|yes)\\b"
-
     - statement: "(?i)\\b(.and.|case|do|else|else?if|else?where|end|end?do|end?if)\\b"
     - statement: "(?i)\\b(end?select|.eqv.|forall|if|lge|lgt|lle|llt|.neqv.|.not.)\\b"
     - statement: "(?i)\\b(.or.|repeat|select case|then|where|while)\\b"
-
     - special: "(?i)\\b(continue|cycle|exit|go?to|result|return)\\b"
-
-      #Operator Color
     - symbol.operator: "[.:;,+*|=!\\%]|/|-|&"
-
-      #Parenthetical Color
     - symbol.bracket: "[(){}]|\\[|\\]"
-
-      # Add preprocessor commands.
     - preproc: "^[[:space:]]*#[[:space:]]*(define|include|(un|ifn?)def|endif|el(if|se)|if|warning|error)"
-
     - constant.string:
         start: "\""
         end: "\""
         skip: "\\\\."
         rules:
             - constant.specialChar: "\\\\."
-
     - constant.string:
         start: "'"
         end: "'"
         skip: "\\\\."
         rules:
             - constant.specialChar: "\\\\."
-
     - comment:
         start: "!"
         end: "$"

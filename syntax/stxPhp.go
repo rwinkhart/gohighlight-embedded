@@ -45,7 +45,6 @@ rules:
         start: "/\\*"
         end: "\\*/"
         rules: []
-
     - preproc: "<\\?(php|=)?"
     - preproc: "\\?>"
     - preproc: "<!DOCTYPE.+?>"`)

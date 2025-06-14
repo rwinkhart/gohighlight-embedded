@@ -11,14 +11,12 @@ rules:
     - type: "\\b(abstract|class|extends|final|implements|import|instanceof|interface|native|package|private|protected|public|static|strictfp|super|synchronized|throws|volatile)\\b"
     - constant: "\\b(true|false|null)\\b"
     - constant.number: "\\b[0-9]+\\b"
-
     - constant.string:
         start: "\""
         end: "\""
         skip: "\\\\."
         rules:
             - constant.specialChar: "\\\\."
-
     - constant.string:
         start: "'"
         end: "'"
@@ -26,12 +24,10 @@ rules:
         rules:
             - preproc: "..+"
             - constant.specialChar: "\\\\."
-
     - comment:
         start: "//"
         end: "$"
         rules: []
-
     - comment:
         start: "/\\*"
         end: "\\*/"

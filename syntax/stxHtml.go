@@ -13,30 +13,22 @@ rules:
     - symbol: "[:=]"
     - identifier: "(alt|bgcolor|height|href|id|label|longdesc|name|on(click|focus|load|mouseover)|size|span|src|target|type|value|width)="
     - constant.number: "(?i)#[0-9A-F]{6,6}"
-    # - default:
-    #     start: ">"
-    #     end: "<"
-    #     rules: []
-
     - symbol.tag: "<|>"
     - constant.string.url: "(ftp(s)?|http(s)?|git|chrome)://[^ 	]+"
     - comment: "<!--.+?-->"
     - preproc: "<!DOCTYPE.+?>"
-
     - constant.string:
         start: "\""
         end: "\""
         skip: "\\\\."
         rules:
             - constant.specialChar: "\\\\."
-
     - default:
         start: "<script.*?>"
         end: "</script.*?>"
         limit-group: symbol.tag
         rules:
             - include: "javascript"
-
     - default:
         start: "<style.*?>"
         end: "</style.*?>"

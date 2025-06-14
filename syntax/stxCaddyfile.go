@@ -16,7 +16,6 @@ rules:
         skip: "\\\\."
         rules:
             - constant.specialChar: "\\\\."
-
     - preproc: "\\{(\\w+|\\$\\w+|%\\w+%)\\}"
     - comment:
         start: "#"

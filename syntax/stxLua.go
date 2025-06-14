@@ -25,39 +25,32 @@ rules:
     - statement: "(\\b(dofile|require|include)|%q|%!|%Q|%r|%x)\\b"
     - constant.number: "\\b([0-9]+)\\b"
     - symbol: "(\\(|\\)|\\[|\\]|\\{|\\}|\\*\\*|\\*|/|%|\\+|-|\\^|>|>=|<|<=|~=|=|\\.\\.)"
-
     - constant.string:
         start: "\""
         end: "\""
         skip: "\\\\."
         rules:
             - constant.specialChar: "\\\\."
-
     - constant.string:
         start: "'"
         end: "'"
         skip: "\\\\."
         rules:
             - constant.specialChar: "\\\\."
-
     - constant.string:
         start: "\\[\\["
         end: "\\]\\]"
         rules:
             - constant.specialChar: "\\\\."
-
     - special: "\\\\[0-7][0-7][0-7]|\\\\x[0-9a-fA-F][0-9a-fA-F]|\\\\[abefnrs]|(\\\\c|\\\\C-|\\\\M-|\\\\M-\\\\C-)."
-
     - comment:
         start: "#"
         end: "$"
         rules: []
-
     - comment:
         start: "\\-\\-"
         end: "$"
         rules: []
-
     - comment:
         start: "\\-\\-\\[\\["
         end: "\\]\\]"
