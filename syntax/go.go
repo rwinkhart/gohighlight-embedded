@@ -1,4 +1,7 @@
-filetype: go
+package syntax
+
+func GetGo() []byte {
+	return []byte(`filetype: go
 
 detect:
     filename: "\\.go$"
@@ -48,8 +51,8 @@ rules:
             - constant.specialChar: "\\\\([0-7]{3}|x[A-Fa-f0-9]{2}|u[A-Fa-f0-9]{4}|U[A-Fa-f0-9]{8})"
 
     - constant.string:
-        start: "`"
-        end: "`"
+        start: "` + "`" + `"
+        end: "` + "`" + `"
         rules: []
 
     - comment:
@@ -63,3 +66,5 @@ rules:
         end: "\\*/"
         rules:
             - todo: "(TODO|XXX|FIXME):?"
+`)
+}

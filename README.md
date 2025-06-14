@@ -1,54 +1,38 @@
 # Highlight
 
-[![CI][badge-build]][build]
-[![GoDoc][go-docs-badge]][go-docs]
-[![GoReportCard][go-report-card-badge]][go-report-card]
-[![License][badge-license]][license]
-
-`gohighlight` is a syntax highlighter of programming languages, config formats and UNIX commands. 
-It allows you to pass in a string and get back all the information you need to properly highlight it..
-This repo includes over a 100 different lexers and contributions are most welcome:)
-
-See [Revising and adding new lexers](#revising-and-adding-new-lexers) for more info.
+`gohighlight-embedded` is a syntax highlighter of programming languages and config formats.
+It allows you to pass in a string and get back all the information you need to properly highlight it.
+This repo includes lexers for many common languages.
 
 ## A note about this repo
 
-This is a fork of [zyedidia/highlight](https://github.com/zyedidia/highlight). 
-I originally submitted pulls against it but it seems to be unmaintained (last commit was in 2020).
+This is a fork of [jessp01/gohighlight](https://github.com/jessp01/gohighlight).
 
-Below is a recap of the main changes made since:
-- Helper method to parse syntax files
-- Better exception handling
-- Corrections/additions to existing lexers
-- Addition of new lexers
-- Revisions to the code examples
-- Basic unit tests (still more to do on that)
+It is meant to be a more minimal version with the syntax files embedded in the Go code (no external .yaml files to load).
 
 ## Installation
 
 ```sh
-$ go get github.com/jessp01/gohighlight
+$ go get github.com/rwinkhart/gohighlight-embedded
 ```
 
 Be sure to point your code to the correct path of `syntax_files`.
 
 ## Basic Usage
 
-Below is a simple example for highlighting a string (a Go snippet in this case). 
+Below is a simple example for highlighting a string (a Go snippet in this case).
 It uses `github.com/fatih/color` to actually colorize the output to the console.
-
-**NOTE: A more comprehensive example is [zaje](https://github.com/jessp01/zaje); a Syntax highlighter to cover all your shell needs (it can replace `cat` and `tail`).**
 
 ```go
 package main
 
 import (
     "fmt"
-    "io/ioutil"
     "strings"
 
     "github.com/fatih/color"
-    "github.com/jessp01/gohighlight"
+    "github.com/rwinkhart/gohighlight-embedded"
+    "github.com/rwinkhart/gohighlight-embedded/syntax"
 )
 
 func main() {
@@ -64,11 +48,7 @@ func helloWorld() {
 
     // Load the go syntax file
     // Make sure that the syntax_files directory is in the current directory
-    syntaxFile, lerr := ioutil.ReadFile("highlight/syntax_files/go.yaml")
-    if lerr != nil {
-        fmt.Println(lerr)
-	return
-    }    
+    syntaxFile := syntax.GetGo()
 
     // Parse it into a `*highlight.Def`
     syntaxDef, err := highlight.ParseDef(syntaxFile)
@@ -154,40 +134,3 @@ func helloWorld() {
     }
 }
 ```
-
-If you would like to automatically detect the file type based on the filename, you can use the `DetectFiletype()` function:
-
-```go
-// Name of the file
-filename := ...
-// The first line of the file (needed to check the filetype by header: e.g. `#!/bin/bash` means shell)
-firstLine := ...
-
-// Parse all the syntax files in an array with type []*highlight.Def
-var defs []*highlight.Def
-...
-
-def := highlight.DetectFiletype(defs, filename, firstLine)
-fmt.Println("Filetype is", def.FileType)
-```
-
-## Revising and adding new lexers
-
-Lexers are `YAML` files that live under the [syntax\_files](./syntax_files) dir.
-
-They can be loaded individually:
-```go
-    syntaxFile, lerr := ioutil.ReadFile("highlight/syntax_files/go.yaml")
-    syntaxDef, err := highlight.ParseDef(syntaxFile)
-```
-
-Or, you can scan the dir and load them all using the `highlight.ParseSyntaxFiles(syn_dir, &defs)()` helper function.
-
-[license]: ./LICENSE
-[badge-license]: https://img.shields.io/github/license/jessp01/gohighlight.svg
-[go-docs-badge]: https://godoc.org/github.com/jessp01/gohighlight?status.svg
-[go-docs]: https://godoc.org/github.com/jessp01/gohighlight
-[go-report-card-badge]: https://goreportcard.com/badge/github.com/jessp01/gohighlight
-[go-report-card]: https://goreportcard.com/report/github.com/jessp01/gohighlight
-[badge-build]: https://github.com/jessp01/gohighlight/actions/workflows/go.yml/badge.svg
-[build]: https://github.com/jessp01/gohighlight/actions/workflows/go.yml
