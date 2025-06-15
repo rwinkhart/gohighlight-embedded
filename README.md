@@ -63,3 +63,17 @@ func helloWorld() {
 	fmt.Println(result)
 }
 ```
+
+## Roadmap
+- [ ] Implement more comprehensive testing
+- [ ] Upgrade to gopkg.in/yaml.v3 **OR** remove the need for the dependency
+- [ ] Add Zig syntax layer (and upstream it)
+- [ ] Upstream relevant changes
+    - [ ] staticcheck warnings (f5367779eb4bcaaca0640f1ce7316001e34f41d8)
+    - [ ] Modernization (depending on Go version support)
+        - [ ] c884c602e382789bf1ccef251d0d85af43da03e0
+        - [ ] 11161c71cdbbec95f6bacc3590b9077b4cac3668
+    - [ ] Syntax layer changes
+        - [ ] ef2880834a545b5353a35c7d918310b23d39d4f3
+        - [ ] bae08261278f21569fc2266b4a4933a6c85b9b25
+        - [ ] 6e8f69839f82fe23a3442f7f9d62d166cac260e3 (maybe)
