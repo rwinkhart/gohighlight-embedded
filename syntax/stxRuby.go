@@ -16,17 +16,15 @@ rules:
     - constant.string: "\"([^\"]|(\\\\\"))*\"|%[QW]?\\{[^}]*\\}|%[QW]?\\([^)]*\\)|%[QW]?<[^>]*>|%[QW]?\\[[^]]*\\]|%[QW]?\\$[^$]*\\$|%[QW]?\\^[^^]*\\^|%[QW]?![^!]*!"
     - special: "#\\{[^}]*\\}"
     - constant.string: "'([^']|(\\\\'))*'|%[qw]\\{[^}]*\\}|%[qw]\\([^)]*\\)|%[qw]<[^>]*>|%[qw]\\[[^]]*\\]|%[qw]\\$[^$]*\\$|%[qw]\\^[^^]*\\^|%[qw]![^!]*!"
-    - comment: "#[^{].*$|#$"
+    - comment: "#+[^{].*$|#$"
     - comment:
         start: "=begin"
         end: "=end"
         rules: []
-    - comment.bright: "##[^{].*$|##$"
     - constant.macro:
         start: "<<-?'?EOT'?"
         end: "^EOT"
         rules: []
-    - todo: "(XXX|TODO|FIXME|\\?\\?\\?)"
-    - preproc.shebang: "^#!.+?( |$)"`)
+    - todo: "(XXX|TODO|FIXME|\\?\\?\\?)"`)
 	}}
 }
