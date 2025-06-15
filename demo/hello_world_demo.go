@@ -27,7 +27,8 @@ func main() {
 		},
 		{
 			language: "python",
-			code: `# Hello World in Python
+			code: `#!/usr/bin/env python3
+# Hello World in Python
 print("Hello, World!")`,
 		},
 		{
@@ -73,7 +74,8 @@ fn main() {
 		},
 		{
 			language: "ruby",
-			code: `# Hello World in Ruby
+			code: `#!/usr/bin/env ruby
+# Hello World in Ruby
 puts "Hello, World!"`,
 		},
 		{
