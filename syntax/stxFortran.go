@@ -31,7 +31,7 @@ rules:
     - statement: "(?i)\\b(.or.|repeat|select case|then|where|while)\\b"
     - special: "(?i)\\b(continue|cycle|exit|go?to|result|return)\\b"
     - symbol.operator: "[.:;,+*|=!\\%]|/|-|&"
-    - symbol.bracket: "[(){}]|\\[|\\]"
+    - symbol.brackets: "[(){}]|\\[|\\]"
     - preproc: "^[[:space:]]*#[[:space:]]*(define|include|(un|ifn?)def|endif|el(if|se)|if|warning|error)"
     - constant.string:
         start: "\""
