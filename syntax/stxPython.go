@@ -4,7 +4,7 @@ package syntax
 
 func init() {
 	syntaxMap["python"] = &lazySyntax{init: func() []byte {
-		return []byte(`filename: python
+		return []byte(`filetype: python
 rules:
     - constant: "\\b(None|self|True|False)\\b"
     - constant: "\\b(__bases__|__builtin__|__class__|__debug__|__dict__|__doc__|__file__|__members__|__methods__|__name__|__self__)\\b"
