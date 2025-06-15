@@ -14,7 +14,7 @@ rules:
     - symbol: "(,|\\.)"
     - type: "\\b(u?int(8|16|32|64)?|float(32|64)|complex(64|128))\\b"
     - type: "\\b(uintptr|byte|rune|string|interface|bool|map|chan|error)\\b"
-    - type.keyword: "\\b(struct)\\b"
+    - keyword: "\\b(struct)\\b"
     - constant.bool: "\\b(true|false|nil)\\b"
     - symbol.brackets: "(\\{|\\})"
     - symbol.brackets: "(\\(|\\))"

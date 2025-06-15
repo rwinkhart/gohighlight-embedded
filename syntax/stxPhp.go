@@ -24,7 +24,7 @@ rules:
     - identifier.class: "[a-zA-Z\\\\]+::"
     - identifier: "([A-Z][a-zA-Z0-9_]+)\\s"
     - identifier: "([A-Z0-9_]+)[;|\\s|\\)|,]"
-    - type.keyword: "(global|public|private|protected|static|const)"
+    - keyword: "(global|public|private|protected|static|const)"
     - type: "\\b(var|class|extends|function|function_exists|__construct|phpinfo|echo|case|default|exit|switch|extends|as|define|do|declare|in|trait|interface|[E|e]xception|array|int|string|bool|iterable|void)\\b"
     - statement: "(^|[[:space:]])(implements|abstract|instanceof|if|else(if)?|endif|namespace|use|as|new|throw|catch|try|while|print|for|(end)?(foreach)?)\\b"
     - identifier: "new\\s([a-zA-Z0-9\\\\]+)"
