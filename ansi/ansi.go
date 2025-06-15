@@ -39,16 +39,16 @@ func Colorize(inputCode, languageID string) (string, error) {
 					colorCode = "\033[94m" // Bright Blue
 				case highlite.Groups["preproc"]:
 					colorCode = "\033[91m" // Bright Red
-				case highlite.Groups["special"], highlite.Groups["red"]:
+				case highlite.Groups["special"]:
 					colorCode = "\033[31m" // Red
 				case highlite.Groups["constant.string"], highlite.Groups["constant"],
-					highlite.Groups["constant.number"], highlite.Groups["cyan"]:
+					highlite.Groups["constant.number"]:
 					colorCode = "\033[36m" // Cyan
-				case highlite.Groups["constant.specialChar"], highlite.Groups["magenta"]:
+				case highlite.Groups["constant.specialChar"]:
 					colorCode = "\033[95m" // Bright Magenta
 				case highlite.Groups["type"]:
 					colorCode = "\033[33m" // Yellow
-				case highlite.Groups["comment"], highlite.Groups["brightgreen"]:
+				case highlite.Groups["comment"]:
 					colorCode = "\033[92m" // Bright Green
 				default:
 					colorCode = "\033[0m" // Reset

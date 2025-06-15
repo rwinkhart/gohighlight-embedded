@@ -12,7 +12,7 @@ rules:
     - constant.number: "\\b[-+]?([0-9]+\\.[0-9]*|[0-9]*\\.[0-9]+)([EePp][+-]?[0-9]+)?[fFlL]?"
     - constant.number: "\\b[-+]?([0-9]+[EePp][+-]?[0-9]+)[fFlL]?"
     - identifier: "[A-Za-z_][A-Za-z0-9_]*[[:space:]]*[(]"
-    - cyan: "[\\(|\\)|/|+|\\-|\\*|\\[|.|,|;]"
+    - special: "[\\(|\\)|/|+|\\-|\\*|\\[|.|,|;]"
     - statement: "\\b(break|case|catch|continue|default|delete|do|else|finally)\\b"
     - statement: "\\b(for|function|get|if|in|instanceof|new|return|set|switch)\\b"
     - statement: "\\b(switch|this|throw|try|typeof|var|void|while|with|const|let)\\b"

@@ -17,8 +17,8 @@ rules:
     - statement: "(flavor|echo|foreach|if|else|fi(;)?|elif|case|esac(;)?|for|done|shift|chmod|chown(info)?|pwd|join|lastword|notdir|or)[[:space:]]"
     - statement: "\\$\\((origin|patsubst|realpath|shell|sort|strip|suffix)[[:space:]]"
     - statement: "\\$\\((value|warning|wildcard|word|wordlist|words)[[:space:]]"
-    - red: "([[:space:]]|^)(rm|rmdir|exit)[[:space:]]"
-    - magenta: "([[:space:]]|^)(gcc|ld)[[:space:]]"
+    - keyword: "([[:space:]]|^)(rm|rmdir|exit)[[:space:]]"
+    - special: "([[:space:]]|^)(gcc|ld)[[:space:]]"
     - type: "^.+:"
     - identifier: "[()$]"
     - constant.string:

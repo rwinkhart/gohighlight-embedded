@@ -13,7 +13,7 @@ rules:
     - type: "\\b(bool|bytearray|bytes|classmethod|complex|dict|enumerate|filter|float|frozenset|int|list|map|memoryview|object|property|range|reversed|set|slice|staticmethod|str|super|tuple|type|zip)\\b"
     - identifier: "def [a-zA-Z_0-9]+"
     - statement: "\\b(and|as|assert|break|class|continue|def|del|elif|else|except|finally|for|from|global|if|import|in|is|lambda|nonlocal|not|or|pass|raise|return|try|while|with|yield)\\b"
-    - brightgreen: "@.*[(]"
+    - special: "@.*[(]"
     - statement: "([.:;,+*|=!\\%@]|<|>|/|-|&)"
     - statement: "([(){}]|\\[|\\])"
     - constant.number: "\\b[0-9]+\\b"
