@@ -32,6 +32,6 @@ rules:
         end: "-\\}"
         rules:
             - todo: "(TODO|XXX|FIXME):?"
-    - identifier.micro: "undefined"`)
+    - identifier.macro: "undefined"`)
 	}}
 }
