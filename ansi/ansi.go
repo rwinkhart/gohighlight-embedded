@@ -6,16 +6,16 @@ import (
 	"strings"
 
 	"github.com/rwinkhart/go-highlite"
-	"github.com/rwinkhart/go-highlite/syntax"
+	"github.com/rwinkhart/go-highlite/lexers"
 )
 
 // Colorize takes a string of code and a language ID, and returns the code
 // with ANSI color codes applied for syntax highlighting.
 func Colorize(inputCode, languageID string, startingColor uint8) (string, error) {
-	// Load and parse the go syntax layer into a `*highlight.Def`
-	syntaxDef, err := highlite.ParseDef(syntax.Get(languageID))
+	// Load and parse the go lexer into a `*highlight.Def`
+	syntaxDef, err := highlite.ParseDef(lexers.Get(languageID))
 	if err != nil {
-		return "", errors.New("unable to parse syntax layer: " + err.Error())
+		return "", errors.New("unable to parse lexer: " + err.Error())
 	}
 
 	// Make a new highlighter from the definition
