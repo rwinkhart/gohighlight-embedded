@@ -8,9 +8,8 @@ func init() {
 rules:
     - identifier: "\\b[A-Z_][0-9A-Z_]+\\b"
     - statement: "([a-zA-Z][a-zA-Z0-9_]*)[[:space:]]*\\("
-    - type: "\\b(float|double|char|int|short|long|sizeof|enum|void|static|const|struct|union|typedef|extern|(un)?signed|inline)\\b"
+    - type: "\\b(float|double|char|bool|int|short|long|sizeof|enum|void|static|const|struct|union|typedef|extern|(un)?signed|inline)\\b"
     - type: "\\b((s?size)|((u_?)?int(8|16|32|64|ptr)))_t\\b"
-    - type.extended: "\\b(bool)\\b"
     - statement: "\\b(typename|mutable|volatile|register|explicit)\\b"
     - statement: "\\b(for|if|while|do|else|case|default|switch)\\b"
     - statement: "\\b(try|throw|catch|operator|new|delete)\\b"
