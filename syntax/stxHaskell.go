@@ -15,7 +15,7 @@ rules:
     - symbol: "\\.|\\$"
     - constant.bool: "\\b(True|False)\\b"
     - constant: "(Nothing|Just|Left|Right|LT|EQ|GT)"
-    - identifier.class: "[ ](Read|Show|Enum|Eq|Ord|Data|Bounded|Typeable|Num|Real|Fractional|Integral|RealFrac|Floating|RealFloat|Monad|MonadPlus|Functor)"
+    - identifier: "[ ](Read|Show|Enum|Eq|Ord|Data|Bounded|Typeable|Num|Real|Fractional|Integral|RealFrac|Floating|RealFloat|Monad|MonadPlus|Functor)"
     - constant.string:
         start: "\""
         end: "\""

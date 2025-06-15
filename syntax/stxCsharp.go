@@ -6,7 +6,7 @@ func init() {
 	syntaxMap["csharp"] = &lazySyntax{init: func() []byte {
 		return []byte(`filetype: csharp
 rules:
-    - identifier.class: "class +[A-Za-z0-9]+ *((:) +[A-Za-z0-9.]+)?"
+    - identifier.macro: "class +[A-Za-z0-9]+ *((:) +[A-Za-z0-9.]+)?"
     - identifier.var: "@[A-Za-z]+"
     - identifier: "[A-Za-z_][A-Za-z0-9_]*[[:space:]]*[()]"
     - type: "\\b(bool|byte|sbyte|char|decimal|double|float|IntPtr|int|uint|long|ulong|object|short|ushort|string|base|this|var|void)\\b"
