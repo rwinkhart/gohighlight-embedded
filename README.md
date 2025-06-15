@@ -55,12 +55,11 @@ func helloWorld() {
     fmt.Println("Hello world")
 }`
 
-	result, err := ansi.Colorize(inputString, "go")
+	result, err := ansi.Colorize(inputString, "go", 171)
 	if err != nil {
 		fmt.Println("Failed to colorize input: " + err.Error())
 		os.Exit(1)
 	}
 	fmt.Println(result)
 }
-
 ```
