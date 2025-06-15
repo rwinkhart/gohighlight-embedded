@@ -17,7 +17,8 @@ rules:
     - identifier: "(alt|bgcolor|height|href|label|longdesc|name|onclick|onfocus|onload|onmouseover|size|span|src|style|target|type|value|width)="
     - constant.string: "\"[^\"]*\""
     - constant.number: "(?i)#[0-9A-F]{6,6}"
-    - constant.string.url: "(ftp(s)?|http(s)?|git|chrome)://[^ 	]+"
+    # constant.number is used in place of constant.string.url to reduce complexity
+    - constant.number: "(ftp(s)?|http(s)?|git|chrome)://[^ 	]+"
     - comment: "<!--.+?-->"
     - default: "<\\?(php|=)\" end=\"\\?>"
     - identifier.macro: "([a-zA-Z0-9_-]+)\\("

@@ -21,7 +21,8 @@ rules:
         end: "<"
         rules: []
     - symbol: "<|>"
-    - constant.string.url: "(ftp(s)?|http(s)?|git|chrome)://[^ 	]+"
+    # constant.number is used in place of constant.string.url to reduce complexity
+    - constant.number: "(ftp(s)?|http(s)?|git|chrome)://[^ 	]+"
     - comment: "<!--.+?-->"
     - preproc: "<!DOCTYPE.+?>"`)
 	}}
