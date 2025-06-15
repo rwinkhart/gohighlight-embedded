@@ -128,7 +128,7 @@ echo "Hello, World!"`,
 	for _, example := range helloWorldExamples {
 		fmt.Printf("Language: %s\n\n", example.language)
 
-		colorized, err := ansi.Colorize(example.code, example.language)
+		colorized, err := ansi.Colorize(example.code, example.language, 171)
 		if err != nil {
 			log.Printf("Error colorizing %s: %v\n", example.language, err)
 			fmt.Println("(Unable to highlight this code)")

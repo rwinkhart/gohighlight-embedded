@@ -2,6 +2,7 @@ package ansi
 
 import (
 	"errors"
+	"fmt"
 	"strings"
 
 	"github.com/rwinkhart/go-highlite"
@@ -10,7 +11,7 @@ import (
 
 // Colorize takes a string of code and a language ID, and returns the code
 // with ANSI color codes applied for syntax highlighting.
-func Colorize(inputCode, languageID string) (string, error) {
+func Colorize(inputCode, languageID string, startingColor uint8) (string, error) {
 	// Load and parse the go syntax layer into a `*highlight.Def`
 	syntaxDef, err := highlite.ParseDef(syntax.Get(languageID))
 	if err != nil {
@@ -31,29 +32,54 @@ func Colorize(inputCode, languageID string) (string, error) {
 		colN := 0
 		for _, c := range l {
 			if group, ok := matches[lineN][colN]; ok {
-				var colorCode string
+				var colorOffset uint8
 				switch group {
-				case highlite.Groups["statement"]:
-					colorCode = "\033[32m" // Green
-				case highlite.Groups["identifier"]:
-					colorCode = "\033[94m" // Bright Blue
-				case highlite.Groups["preproc"]:
-					colorCode = "\033[91m" // Bright Red
-				case highlite.Groups["special"]:
-					colorCode = "\033[31m" // Red
-				case highlite.Groups["constant.string"], highlite.Groups["constant"],
-					highlite.Groups["constant.number"]:
-					colorCode = "\033[36m" // Cyan
+				case highlite.Groups["comment"]: // TODO static color
+					colorOffset = 0
+				case highlite.Groups["constant"]:
+					colorOffset = 2
+				case highlite.Groups["constant.bool"]:
+					colorOffset = 4
+				case highlite.Groups["constant.number"]:
+					colorOffset = 6
 				case highlite.Groups["constant.specialChar"]:
-					colorCode = "\033[95m" // Bright Magenta
+					colorOffset = 8
+				case highlite.Groups["constant.string"]:
+					colorOffset = 10
+				case highlite.Groups["error"]: // TODO static color
+					colorOffset = 12
+				case highlite.Groups["identifier"]:
+					colorOffset = 14
+				case highlite.Groups["identifier.macro"]:
+					colorOffset = 16
+				case highlite.Groups["identifier.var"]:
+					colorOffset = 18
+				case highlite.Groups["keyword"]:
+					colorOffset = 20
+				case highlite.Groups["preproc"]:
+					colorOffset = 22
+				case highlite.Groups["special"]:
+					colorOffset = 24
+				case highlite.Groups["statement"]:
+					colorOffset = 26
+				case highlite.Groups["symbol"]:
+					colorOffset = 28
+				case highlite.Groups["symbol.brackets"]:
+					colorOffset = 30
+				case highlite.Groups["symbol.operator"]:
+					colorOffset = 32
+				case highlite.Groups["todo"]:
+					colorOffset = 34
 				case highlite.Groups["type"]:
-					colorCode = "\033[33m" // Yellow
-				case highlite.Groups["comment"]:
-					colorCode = "\033[92m" // Bright Green
+					colorOffset = 36
 				default:
-					colorCode = "\033[0m" // Reset
+					colorOffset = 255
 				}
-				outputString.WriteString(colorCode)
+				if colorOffset == 255 {
+					outputString.WriteString("\033[0m") // Reset/default color
+				} else {
+					outputString.WriteString(fmt.Sprintf("\033[38;5;%dm", startingColor+colorOffset))
+				}
 			}
 			outputString.WriteRune(c)
 			colN++

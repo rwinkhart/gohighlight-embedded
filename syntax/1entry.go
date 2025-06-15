@@ -2,6 +2,27 @@ package syntax
 
 import "sync"
 
+// Syntax Rules Master List
+// comment
+// constant
+// constant.bool
+// constant.number
+// constant.specialChar
+// constant.string
+// error
+// identifier
+// identifier.macro
+// identifier.var
+// keyword
+// preproc
+// special
+// statement
+// symbol
+// symbol.brackets
+// symbol.operator
+// todo
+// type
+
 var syntaxMap = make(map[string]*lazySyntax)
 
 type lazySyntax struct {
