@@ -33,9 +33,9 @@ func Colorize(inputCode, languageID string) (string, error) {
 			if group, ok := matches[lineN][colN]; ok {
 				var colorCode string
 				switch group {
-				case highlite.Groups["statement"], highlite.Groups["green"]:
+				case highlite.Groups["statement"]:
 					colorCode = "\033[32m" // Green
-				case highlite.Groups["identifier"], highlite.Groups["blue"]:
+				case highlite.Groups["identifier"]:
 					colorCode = "\033[94m" // Bright Blue
 				case highlite.Groups["preproc"]:
 					colorCode = "\033[91m" // Bright Red
@@ -46,9 +46,9 @@ func Colorize(inputCode, languageID string) (string, error) {
 					colorCode = "\033[36m" // Cyan
 				case highlite.Groups["constant.specialChar"], highlite.Groups["magenta"]:
 					colorCode = "\033[95m" // Bright Magenta
-				case highlite.Groups["type"], highlite.Groups["yellow"]:
+				case highlite.Groups["type"]:
 					colorCode = "\033[33m" // Yellow
-				case highlite.Groups["comment"], highlite.Groups["high.green"]:
+				case highlite.Groups["comment"], highlite.Groups["brightgreen"]:
 					colorCode = "\033[92m" // Bright Green
 				default:
 					colorCode = "\033[0m" // Reset
